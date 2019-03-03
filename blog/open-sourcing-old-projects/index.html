@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en-gb">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Open-Sourcing Old Projects - Dave Gill</title>
+    <meta name="generator" content="Hugo 0.53" />
+    <meta name="referrer" content="origin" />
+    <meta name="author" content="David Gill" />
+    <meta name="description" content="A blog about programming, electronics and other techie things." />
+    <meta name="copyright" content="Copyright © 2019 David Gill; all rights reserved." />
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Open-Sourcing Old Projects"/>
+<meta name="twitter:description" content="I have made the decision to open-source some of my old projects onto Github. These are ones that have not seen any love in a while.
+So with no further ado I am excited to announce the open-source debut of 3 such projects:
+ PaprikaLang - A hand-rolled compiler targeting .Net. The Paprika language itself is also an experiment to disguise certain key functional techniques (like reduce/fold and immutability) and present in them more palatable way for the procedurally minded."/>
+<meta name="twitter:site" content="@daveagill"/>
+
+    <meta property="og:title" content="Open-Sourcing Old Projects" />
+<meta property="og:description" content="I have made the decision to open-source some of my old projects onto Github. These are ones that have not seen any love in a while.
+So with no further ado I am excited to announce the open-source debut of 3 such projects:
+ PaprikaLang - A hand-rolled compiler targeting .Net. The Paprika language itself is also an experiment to disguise certain key functional techniques (like reduce/fold and immutability) and present in them more palatable way for the procedurally minded." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://davegill.io/blog/open-sourcing-old-projects/" /><meta property="article:published_time" content="2017-06-19T23:43:38&#43;00:00"/>
+<meta property="article:modified_time" content="2017-06-19T23:43:38&#43;00:00"/>
+
+
+    
+
+    <link rel="canonical" href="https://davegill.io/blog/open-sourcing-old-projects/" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    
+    <link rel="stylesheet" href="/main.min.6f93b053ce4ff71133c78c16f7b233da4403b62fc8bbdf3e789337eeeee4ccdd.css" />
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css" integrity="sha256-w6kCMnFvhY2tI1OnsYR/rb5DG9yFGodJknvFZOkp51E=" crossorigin="anonymous" />
+    
+
+    
+
+    
+        
+            <link href="https://fonts.googleapis.com/css?family=Merriweather%3a300%2c300i%2c700%2c700i" rel="stylesheet" />
+        
+            <link href="https://fonts.googleapis.com/css?family=Raleway%3a400%2c600%2c700" rel="stylesheet" />
+        
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
+    
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+
+    
+        <a href="/">
+            <img class="logo" src="/logo.jpg" alt="logo">
+        </a>
+    
+
+    <div class="main-header-section">
+        <div>
+            <a href="/">
+                <h1>Dave Gill</h1>
+            </a>
+
+            <nav>
+                <ul>
+                    
+                        <li>
+                            <a  
+                                href="/"
+                                title="Home">↪ Home</a>
+                        </li>
+                    
+                        <li>
+                            <a  
+                                href="/blog/"
+                                title="Blog">↪ Blog</a>
+                        </li>
+                    
+                </ul>
+            </nav>
+        </div>
+
+        <div>
+            
+                <div class="social">
+    
+        <a href = "https://github.com/daveagill" alt="GitHub" class="fab fa-github" style="color:#000000;" target="_blank"></a>
+    
+        <a href = "https://twitter.com/daveagill" alt="Twitter" class="fab fa-twitter" style="color:#1da1f2;" target="_blank"></a>
+    
+        <a href = "https://linkedin.com/daveagill" alt="LinkedIn" class="fab fa-linkedin" style="color:#007bb5;" target="_blank"></a>
+    
+        <a href = "https://youtube.com/user/daveagill" alt="YouTube" class="fab fa-youtube" style="color:#ff0000;" target="_blank"></a>
+    
+        <a href = "https://flickr.com/photos/142957833@N08" alt="Flickr" class="fab fa-flickr" style="color:#ff0084;" target="_blank"></a>
+    
+        <a href = "/index.xml" alt="RSS Feed" class="fas fa-rss" style="color:#ee802f;" target="_blank"></a>
+    
+</div>
+            
+            
+        </div>
+    </div>
+
+</div>
+
+        <div id="content">
+            
+    <h1 class="post-heading">Open-Sourcing Old Projects</h1>
+
+    <div class="frontmatter meta">
+        <ul class="article-info">
+            <li class="date" title='Mon Jun 19 2017 23:43:38 &#43;0000'>June 19, 2017</li>
+
+            
+                
+            
+
+            <li class="reading-time">2 minutes</li>
+        </ul>
+        <ul class="tags">
+            
+                <li><a href="/tags/programming">Programming</a></li>
+            
+                <li><a href="/tags/open-source">Open Source</a></li>
+            
+        </ul>
+    </div>
+
+    <div class="markdown">
+    <p>I have made the decision to open-source some of my old projects onto Github. These are ones that have not seen any love in a while.</p>
+
+<p>So with no further ado I am excited to announce the open-source debut of 3 such projects:</p>
+
+<ul>
+<li><a href="https://github.com/daveagill/PaprikaLang" title="PaprikaLang on Github"><strong>PaprikaLang</strong></a> - A hand-rolled compiler targeting .Net. The Paprika language itself is also an experiment to disguise certain key functional techniques (like reduce/fold and immutability) and present in them more palatable way for the procedurally minded. Paprika has some esoteric syntax that I have not seen all in one language before. Probably at some stage I will write a bigger post about this; (programming) language design has always been an interesting topic for me.</li>
+<li><a href="https://github.com/daveagill/GamutOfBlob" title="Gamut Of Blob game on Github"><strong>GamutOfBlob</strong></a> - My entry for <a href="/blog/week-of-awesome-4-post-mortem/" title="Week of Awesome IV – Gamut of Blob – Postmortem">the Gamedev.net Week of Awesome IV competition</a> which won 1st prize. Coded in only a week, so don&rsquo;t judge the code too harshly ;-)</li>
+<li><a href="https://github.com/daveagill/giftstack-app" title="Giftstack app on Github"><strong>GiftStack</strong></a> - Just me messing around with Apache Cordova and OnsenUI to build a simple mobile app. Horribly unfinished but it does demonstrate that I can do the Javascripts when I have to!</li>
+</ul>
+
+<p>So why am I doing this? Really just to show off some of things I&rsquo;ve done over the years. Why do any of us upload anything to the internet afterall!?</p>
+
+<p>More projects will follow in due course as and when I find the time to excavate them from the darkly depths of old harddrive backups. But I&rsquo;m pleased that the ball is already rolling!</p>
+
+</div>
+    
+    
+        <div class="posts-navigation">
+            
+                <a class="prev" href="/blog/week-of-awesome-4-post-mortem/">Week of Awesome IV - Gamut of Blob - Postmortem</a>
+            
+            
+                <a class="next" href="/blog/week-of-awesome-5-post-mortem/">Week of Awesome 5 - Post-Mortem</a>
+            
+        </div>
+    
+    
+    
+<div id="disqus_thread"></div>
+<script>
+    (function() {
+        
+            var disqusURL = 'https:\/\/davegill.io\/blog\/open-sourcing-old-projects\/';
+        
+
+        if (disqusURL.indexOf("localhost") != -1 || disqusURL.indexOf("127.0.0.1") != -1) {
+            document.getElementById('disqus_thread').innerHTML = '<p>Disqus comments are not available by default when the website is previewed locally. Set Params.disqusBaseURL in config.toml to enable local comments.</p>';
+            return;
+        }
+
+        window.disqus_config = function () {
+            this.page.title = 'Open-Sourcing Old Projects';
+            this.page.identifier = 'open-sourcing-old-projects';
+            this.page.url = disqusURL;
+        }
+
+        var d = document, s = d.createElement('script');
+        s.src = 'https://dave-gill.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>
+    <p>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></p>
+</noscript>
+
+
+        </div>
+        <div id="footer">
+        
+            <div class="social">
+    
+        <a href = "https://github.com/daveagill" alt="GitHub" class="fab fa-github" style="color:#000000;" target="_blank"></a>
+    
+        <a href = "https://twitter.com/daveagill" alt="Twitter" class="fab fa-twitter" style="color:#1da1f2;" target="_blank"></a>
+    
+        <a href = "https://linkedin.com/daveagill" alt="LinkedIn" class="fab fa-linkedin" style="color:#007bb5;" target="_blank"></a>
+    
+        <a href = "https://youtube.com/user/daveagill" alt="YouTube" class="fab fa-youtube" style="color:#ff0000;" target="_blank"></a>
+    
+        <a href = "https://flickr.com/photos/142957833@N08" alt="Flickr" class="fab fa-flickr" style="color:#ff0084;" target="_blank"></a>
+    
+        <a href = "/index.xml" alt="RSS Feed" class="fas fa-rss" style="color:#ee802f;" target="_blank"></a>
+    
+</div>
+        
+        
+        
+    
+        
+            <span class="copyright">Copyright © 2019 David Gill; all rights reserved.</span>
+        
+    </div>
+    
+    </div>
+    
+    
+
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+        <script>
+            window.addEventListener('load', function() {
+                hljs.initHighlighting();
+            }, true);
+        </script>
+    
+
+    
+
+    
+    
+</body>
+
+</html>

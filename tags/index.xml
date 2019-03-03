@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Dave Gill</title>
+    <link>https://davegill.io/tags/</link>
+    <description>Recent content in Tags on Dave Gill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>Copyright © {year} David Gill; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 15 Apr 2014 13:32:38 +0000</lastBuildDate>
+    
+	<atom:link href="https://davegill.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Android</title>
+      <link>https://davegill.io/tags/android/</link>
+      <pubDate>Tue, 15 Apr 2014 13:32:38 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Arduino</title>
+      <link>https://davegill.io/tags/arduino/</link>
+      <pubDate>Mon, 16 Sep 2013 22:01:55 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/arduino/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>https://davegill.io/tags/c&#43;&#43;/</link>
+      <pubDate>Mon, 16 Sep 2013 22:01:55 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Computer Hardware</title>
+      <link>https://davegill.io/tags/computer-hardware/</link>
+      <pubDate>Thu, 14 Nov 2013 20:26:39 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/computer-hardware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Electronics</title>
+      <link>https://davegill.io/tags/electronics/</link>
+      <pubDate>Mon, 16 Sep 2013 22:01:55 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/electronics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GLSL</title>
+      <link>https://davegill.io/tags/glsl/</link>
+      <pubDate>Sun, 20 Aug 2017 00:34:17 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/glsl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Game Development</title>
+      <link>https://davegill.io/tags/game-development/</link>
+      <pubDate>Fri, 02 Feb 2018 18:37:46 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/game-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://davegill.io/tags/java/</link>
+      <pubDate>Sun, 20 Aug 2017 00:34:17 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Mobile</title>
+      <link>https://davegill.io/tags/mobile/</link>
+      <pubDate>Tue, 15 Apr 2014 13:32:38 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/mobile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Open Source</title>
+      <link>https://davegill.io/tags/open-source/</link>
+      <pubDate>Mon, 19 Jun 2017 23:43:38 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/open-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Photography</title>
+      <link>https://davegill.io/tags/photography/</link>
+      <pubDate>Sat, 02 Aug 2014 22:49:41 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/photography/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Programming</title>
+      <link>https://davegill.io/tags/programming/</link>
+      <pubDate>Sun, 20 Aug 2017 00:34:17 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SysAdmin</title>
+      <link>https://davegill.io/tags/sysadmin/</link>
+      <pubDate>Tue, 15 Apr 2014 13:32:38 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/sysadmin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web Development</title>
+      <link>https://davegill.io/tags/web-development/</link>
+      <pubDate>Mon, 09 Sep 2013 12:00:19 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/web-development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WordPress</title>
+      <link>https://davegill.io/tags/wordpress/</link>
+      <pubDate>Mon, 09 Sep 2013 12:00:19 +0000</pubDate>
+      
+      <guid>https://davegill.io/tags/wordpress/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GLSL on Dave Gill</title>
+    <link>https://davegill.io/tags/glsl/</link>
+    <description>Recent content in GLSL on Dave Gill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>Copyright © {year} David Gill; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 20 Aug 2017 00:34:17 +0000</lastBuildDate>
+    
+	<atom:link href="https://davegill.io/tags/glsl/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fluid Rendering with Box2D</title>
+      <link>https://davegill.io/blog/fluid-rendering-with-box2d/</link>
+      <pubDate>Sun, 20 Aug 2017 00:34:17 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/fluid-rendering-with-box2d/</guid>
+      <description>This is a technical article about how I implemented the fluid in my game &amp;ldquo;Invasion of the Liquid Snatchers!&amp;rdquo; which was my entry for the Week of Awesome 5 gamedev competition.
+One of the biggest compliments I&amp;rsquo;ve received about the game is when people think the fluid simulation is some kind of soft-body physics or a true fluid simulation. But it isn&amp;rsquo;t!
+The simulation is achieved using Box2D doing regular hard-body collisions using lots of little (non-rotating) circle-shaped bodies.</description>
+    </item>
+    
+  </channel>
+</rss>

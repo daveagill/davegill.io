@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="en-gb">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Fluid Rendering with Box2D - Dave Gill</title>
+    <meta name="generator" content="Hugo 0.53" />
+    <meta name="referrer" content="origin" />
+    <meta name="author" content="David Gill" />
+    <meta name="description" content="A blog about programming, electronics and other techie things." />
+    <meta name="copyright" content="Copyright © 2019 David Gill; all rights reserved." />
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fluid Rendering with Box2D"/>
+<meta name="twitter:description" content="This is a technical article about how I implemented the fluid in my game &ldquo;Invasion of the Liquid Snatchers!&rdquo; which was my entry for the Week of Awesome 5 gamedev competition.
+One of the biggest compliments I&rsquo;ve received about the game is when people think the fluid simulation is some kind of soft-body physics or a true fluid simulation. But it isn&rsquo;t!
+The simulation is achieved using Box2D doing regular hard-body collisions using lots of little (non-rotating) circle-shaped bodies."/>
+<meta name="twitter:site" content="@daveagill"/>
+
+    <meta property="og:title" content="Fluid Rendering with Box2D" />
+<meta property="og:description" content="This is a technical article about how I implemented the fluid in my game &ldquo;Invasion of the Liquid Snatchers!&rdquo; which was my entry for the Week of Awesome 5 gamedev competition.
+One of the biggest compliments I&rsquo;ve received about the game is when people think the fluid simulation is some kind of soft-body physics or a true fluid simulation. But it isn&rsquo;t!
+The simulation is achieved using Box2D doing regular hard-body collisions using lots of little (non-rotating) circle-shaped bodies." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://davegill.io/blog/fluid-rendering-with-box2d/" /><meta property="article:published_time" content="2017-08-20T00:34:17&#43;00:00"/>
+<meta property="article:modified_time" content="2017-08-20T00:34:17&#43;00:00"/>
+
+
+    
+
+    <link rel="canonical" href="https://davegill.io/blog/fluid-rendering-with-box2d/" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    
+    <link rel="stylesheet" href="/main.min.6f93b053ce4ff71133c78c16f7b233da4403b62fc8bbdf3e789337eeeee4ccdd.css" />
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css" integrity="sha256-w6kCMnFvhY2tI1OnsYR/rb5DG9yFGodJknvFZOkp51E=" crossorigin="anonymous" />
+    
+
+    
+
+    
+        
+            <link href="https://fonts.googleapis.com/css?family=Merriweather%3a300%2c300i%2c700%2c700i" rel="stylesheet" />
+        
+            <link href="https://fonts.googleapis.com/css?family=Raleway%3a400%2c600%2c700" rel="stylesheet" />
+        
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
+    
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+
+    
+        <a href="/">
+            <img class="logo" src="/logo.jpg" alt="logo">
+        </a>
+    
+
+    <div class="main-header-section">
+        <div>
+            <a href="/">
+                <h1>Dave Gill</h1>
+            </a>
+
+            <nav>
+                <ul>
+                    
+                        <li>
+                            <a  
+                                href="/"
+                                title="Home">↪ Home</a>
+                        </li>
+                    
+                        <li>
+                            <a  
+                                href="/blog/"
+                                title="Blog">↪ Blog</a>
+                        </li>
+                    
+                </ul>
+            </nav>
+        </div>
+
+        <div>
+            
+                <div class="social">
+    
+        <a href = "https://github.com/daveagill" alt="GitHub" class="fab fa-github" style="color:#000000;" target="_blank"></a>
+    
+        <a href = "https://twitter.com/daveagill" alt="Twitter" class="fab fa-twitter" style="color:#1da1f2;" target="_blank"></a>
+    
+        <a href = "https://linkedin.com/daveagill" alt="LinkedIn" class="fab fa-linkedin" style="color:#007bb5;" target="_blank"></a>
+    
+        <a href = "https://youtube.com/user/daveagill" alt="YouTube" class="fab fa-youtube" style="color:#ff0000;" target="_blank"></a>
+    
+        <a href = "https://flickr.com/photos/142957833@N08" alt="Flickr" class="fab fa-flickr" style="color:#ff0084;" target="_blank"></a>
+    
+        <a href = "/index.xml" alt="RSS Feed" class="fas fa-rss" style="color:#ee802f;" target="_blank"></a>
+    
+</div>
+            
+            
+        </div>
+    </div>
+
+</div>
+
+        <div id="content">
+            
+    <h1 class="post-heading">Fluid Rendering with Box2D</h1>
+
+    <div class="frontmatter meta">
+        <ul class="article-info">
+            <li class="date" title='Sun Aug 20 2017 00:34:17 &#43;0000'>August 20, 2017</li>
+
+            
+                
+            
+
+            <li class="reading-time">6 minutes</li>
+        </ul>
+        <ul class="tags">
+            
+                <li><a href="/tags/programming">Programming</a></li>
+            
+                <li><a href="/tags/game-development">Game Development</a></li>
+            
+                <li><a href="/tags/java">Java</a></li>
+            
+                <li><a href="/tags/glsl">GLSL</a></li>
+            
+        </ul>
+    </div>
+
+    <div class="markdown">
+    
+
+<p>This is a technical article about how I implemented the fluid in my game &ldquo;Invasion of the Liquid Snatchers!&rdquo; which was my entry for the Week of Awesome 5 gamedev competition.</p>
+
+<p>One of the biggest compliments I&rsquo;ve received about the game is when people think the fluid simulation is some kind of soft-body physics or a true fluid simulation. <strong>But it isn&rsquo;t!</strong></p>
+
+<p>The simulation is achieved using Box2D doing regular hard-body collisions using lots of little (non-rotating) circle-shaped bodies. The <em>illusion</em> of soft-body particles is achieved in the rendering.</p>
+
+<h2 id="the-rendering-process">The Rendering Process</h2>
+
+<p>Each particle is drawn using a texture of a white circle that is opaque in the center but fades to fully transparent at the circumference:</p>
+
+
+
+
+
+
+
+    
+    
+
+    <figure>
+        <a href="/blog/fluid-rendering-with-box2d/particle.png">
+            <img
+                src="/blog/fluid-rendering-with-box2d/particle_hu0a10b7c41af974af17c6acf3ca6aee13_34447_0x200_resize_box_2.png"
+                width="200"
+                height="200"
+                title="Particle - A white circle with fading alpha out to the edges"
+                alt="Particle - A white circle with fading alpha out to the edges" >
+        </a>
+    </figure>
+
+
+<p>These are drawn to an RGBA8888 off-screen texture (using a &lsquo;framebuffer&rsquo; in OpenGL parlance) and I &lsquo;tint&rsquo; to the intended colour of the particle (tinting is something that LibGDX can do out-of-the-box with its default shader).</p>
+
+<p>It is crucial to draw each ball larger than it is represented in Box2D. Physically speaking these balls will not overlap (because it&rsquo;s a hard-body simulation after all!) yet in the rendering we do need these balls to overlap and blend together.</p>
+
+<p>The blending is non-trivial as there are a few requirements we have to take into account:</p>
+
+<ul>
+<li>The RGB colour channels should blend together when particles of different colours overlap.
+
+<ul>
+<li>&hellip; but we don&rsquo;t want colours to saturate towards white.</li>
+<li>&hellip; and we don&rsquo;t want them to darken when we blend with the initially black background colour.</li>
+</ul></li>
+<li>The alpha channel should accumulate additively to indicate the &lsquo;strength&rsquo; of the liquid at each pixel.</li>
+</ul>
+
+<p>All of that can be achieved in GLES2.0 using this blend technique:</p>
+
+<pre><code>glClearColor(0, 0, 0, 0);
+glBlendFuncSeparate(GL_ONE_MINUS_DST_ALPHA, GL_DST_ALPHA, GL_ONE, GL_ONE);
+</code></pre>
+
+<p>Putting all that together gets us a texture of lots of blurry coloured balls:</p>
+
+
+
+
+
+
+
+    
+    
+
+    <figure>
+        <a href="/blog/fluid-rendering-with-box2d/blurryparticles.png">
+            <img
+                src="/blog/fluid-rendering-with-box2d/blurryparticles_hue93d998e4ea0dd0d4dfcf6ab3d810260_63692_0x400_resize_box_2.png"
+                width="693"
+                height="400"
+                title="Rendering the fluid with the blend function"
+                alt="Rendering the fluid with the blend function" >
+        </a>
+    </figure>
+
+
+<p>Next up, is to contribute this to the main backbuffer as a full-screen quad using a custom shader.</p>
+
+<p>The shader treats the alpha channel of the texture as a &lsquo;potential field&rsquo;, the higher the value the stronger the field is at that fragment. The shader compares the strength of the field to a threshold:</p>
+
+<ul>
+<li>Where this field strength is strong enough then we will snap the alpha to 1.0 to manifest some liquid.</li>
+<li>Where the field strength is too weak then we will snap the alpha to 0.0 (or we could just discard the fragment) to avoid drawing anything.</li>
+</ul>
+
+<p>For the final game I went a little further and also included a small window around that threshold to smoothly blend between 0 and 1 in the alpha channel, this softens and effectively anti-aliases the fluid boundary.</p>
+
+<p>Here&rsquo;s the shader:</p>
+
+<pre><code>varying vec2 v_texCoords;
+uniform sampler2D u_texture;
+
+// field values above this are 'inside' the fluid, otherwise we are 'outside'.
+const float threshold = 0.6;
+
+// +/- this window around the threshold for a smooth transition around the boundary.
+const float window = 0.1;
+
+void main() {
+    vec4 col = texture2D(u_texture, v_texCoords);
+    float fieldStrength = col.a;
+    col.a = smoothstep(threshold - window, threshold + window, fieldStrength);
+    gl_FragColor = col;
+}
+</code></pre>
+
+<p>This gives us a solid edged boundary where pixels are either lit or or not lit by the fluid. Here is the result after we apply the shader:</p>
+
+
+
+
+
+
+
+    
+    
+
+    <figure>
+        <a href="/blog/fluid-rendering-with-box2d/aftershader.png">
+            <img
+                src="/blog/fluid-rendering-with-box2d/aftershader_hu0467c05f661bde6e8abe8cbcd3417cb8_26166_0x400_resize_box_2.png"
+                width="703"
+                height="400"
+                title="Rendering the fluid with the post-processing shader"
+                alt="Rendering the fluid with the post-processing shader" >
+        </a>
+    </figure>
+
+
+<p>Thing are looking a lot more more liquid-like now!</p>
+
+<p>The way this works is that when particles come within close proximity of each other their potential fields start to add up; once the field strength is high enough the shader will start lighting up pixels between the two particles. This gives us the &lsquo;globbing together&rsquo; effect which really makes it look like a fluid.</p>
+
+<p>Since the fluid is comprised of thousands of rounded shapes it tends to leave gaps against the straight-edged tilemap. So the full-screen quad is in fact scaled-up to be just a little bit larger than the screen and is draw behind the main scene elements. This helps to ensure that the liquid really fills up any corners and crevices.</p>
+
+<p>Here is the final result:</p>
+
+
+
+
+
+
+
+    
+    
+
+    <figure>
+        <a href="/blog/fluid-rendering-with-box2d/fullycompositedfluid.png">
+            <img
+                src="/blog/fluid-rendering-with-box2d/fullycompositedfluid_hucb060a9ba030a4478ac15c21d0852c92_153741_0x400_resize_box_2.png"
+                width="821"
+                height="400"
+                title="Final rendering with the fluid composited into the scene."
+                alt="Final rendering with the fluid composited into the scene." >
+        </a>
+    </figure>
+
+
+<p>And that&rsquo;s all there is for the basic technique behind it!  </p>
+
+<h2 id="extra-niceties">Extra Niceties</h2>
+
+<p>I do a few other subtle tricks which helps to make the fluids feel more believable&hellip;</p>
+
+<ul>
+<li>Each particle has an age and a current speed. I weight these together into a &lsquo;froth-factor&rsquo; value between 0 and 1 that is used to lighten the colour of a particle. This means that younger or faster-moving particles are whiter than older or stationary parts of the fluid. The idea is to allow us to see particles mixing into a larger body of fluid.</li>
+<li>The stationary &lsquo;wells&rsquo; where fluid collects are always a slightly darker shade compared to the fluid particles. This guarantees that we can see the particles &lsquo;mixing&rsquo; when they drop into the wells.</li>
+<li>Magma particles are all different shades of dark red selected randomly at spawn time. This started out as bug where magma and oil particles were being accidentally mixed together but it looked so cool that I decided to make it happen deliberately!</li>
+<li>When I remove a particle from the simulation it doesn&rsquo;t just pop out of existence, instead I fade it away. This gets further disguised by the &lsquo;potential field&rsquo; shader which makes it look like the fluid drains or shrinks away more naturally. So on the whole the fading is not directly observable.</li>
+</ul>
+
+<h2 id="performance-optimisations">Performance Optimisations</h2>
+
+<p>As mentioned in my post-mortem of the game I had to dedicate some time to make the simulation CPU and Memory performant:</p>
+
+<ul>
+<li> The &lsquo;wells&rsquo; that receive the fluid are really just coloured rectangles that &ldquo;fill up&rdquo;. They are not simulated. It means I can remove particles from the simulation once they are captured by the wells and just increment the fill-level of the well.</li>
+<li>If particles slow down below a threshold then they are turned into non-moving static bodies. Statics are not exactly very fluid-like but they perform much better in Box2D than thousands of dynamic bodies because they don&rsquo;t respond to forces. I also trigger their decay at that point too, so they don&rsquo;t hang around in this state for long enough for the player to notice.</li>
+<li>All particles will eventually decay. I set a max lifetime of 20-seconds. This is also to prevent the player from just flooding the level and cheating their way through the game.</li>
+<li>To keep Java&rsquo;s Garbage Collector from stalling the gameplay I had to avoid doing memory allocations per-particle where possible. Mainly this is for things like allocating temporary Vector2 objects or Color objects. So I factored these out into singular long-lived instances and just (re)set their state per-particle.</li>
+</ul>
+
+</div>
+    
+    
+        <div class="posts-navigation">
+            
+                <a class="prev" href="/blog/week-of-awesome-5-post-mortem/">Week of Awesome 5 - Post-Mortem</a>
+            
+            
+                <a class="next" href="/blog/some-gamedev-videos/">Some gamedev videos</a>
+            
+        </div>
+    
+    
+    
+<div id="disqus_thread"></div>
+<script>
+    (function() {
+        
+            var disqusURL = 'https:\/\/davegill.io\/blog\/fluid-rendering-with-box2d\/';
+        
+
+        if (disqusURL.indexOf("localhost") != -1 || disqusURL.indexOf("127.0.0.1") != -1) {
+            document.getElementById('disqus_thread').innerHTML = '<p>Disqus comments are not available by default when the website is previewed locally. Set Params.disqusBaseURL in config.toml to enable local comments.</p>';
+            return;
+        }
+
+        window.disqus_config = function () {
+            this.page.title = 'Fluid Rendering with Box2D';
+            this.page.identifier = 'fluid-rendering-with-box2d';
+            this.page.url = disqusURL;
+        }
+
+        var d = document, s = d.createElement('script');
+        s.src = 'https://dave-gill.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>
+    <p>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></p>
+</noscript>
+
+
+        </div>
+        <div id="footer">
+        
+            <div class="social">
+    
+        <a href = "https://github.com/daveagill" alt="GitHub" class="fab fa-github" style="color:#000000;" target="_blank"></a>
+    
+        <a href = "https://twitter.com/daveagill" alt="Twitter" class="fab fa-twitter" style="color:#1da1f2;" target="_blank"></a>
+    
+        <a href = "https://linkedin.com/daveagill" alt="LinkedIn" class="fab fa-linkedin" style="color:#007bb5;" target="_blank"></a>
+    
+        <a href = "https://youtube.com/user/daveagill" alt="YouTube" class="fab fa-youtube" style="color:#ff0000;" target="_blank"></a>
+    
+        <a href = "https://flickr.com/photos/142957833@N08" alt="Flickr" class="fab fa-flickr" style="color:#ff0084;" target="_blank"></a>
+    
+        <a href = "/index.xml" alt="RSS Feed" class="fas fa-rss" style="color:#ee802f;" target="_blank"></a>
+    
+</div>
+        
+        
+        
+    
+        
+            <span class="copyright">Copyright © 2019 David Gill; all rights reserved.</span>
+        
+    </div>
+    
+    </div>
+    
+    
+
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+        <script>
+            window.addEventListener('load', function() {
+                hljs.initHighlighting();
+            }, true);
+        </script>
+    
+
+    
+
+    
+    
+</body>
+
+</html>

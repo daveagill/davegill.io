@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on Dave Gill</title>
+    <link>https://davegill.io/tags/programming/</link>
+    <description>Recent content in Programming on Dave Gill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>Copyright © {year} David Gill; all rights reserved.</copyright>
+    <lastBuildDate>Sun, 20 Aug 2017 00:34:17 +0000</lastBuildDate>
+    
+	<atom:link href="https://davegill.io/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Fluid Rendering with Box2D</title>
+      <link>https://davegill.io/blog/fluid-rendering-with-box2d/</link>
+      <pubDate>Sun, 20 Aug 2017 00:34:17 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/fluid-rendering-with-box2d/</guid>
+      <description>This is a technical article about how I implemented the fluid in my game &amp;ldquo;Invasion of the Liquid Snatchers!&amp;rdquo; which was my entry for the Week of Awesome 5 gamedev competition.
+One of the biggest compliments I&amp;rsquo;ve received about the game is when people think the fluid simulation is some kind of soft-body physics or a true fluid simulation. But it isn&amp;rsquo;t!
+The simulation is achieved using Box2D doing regular hard-body collisions using lots of little (non-rotating) circle-shaped bodies.</description>
+    </item>
+    
+    <item>
+      <title>Week of Awesome 5 - Post-Mortem</title>
+      <link>https://davegill.io/blog/week-of-awesome-5-post-mortem/</link>
+      <pubDate>Sun, 20 Aug 2017 00:34:09 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/week-of-awesome-5-post-mortem/</guid>
+      <description>Well the 5th Week of Awesome Gamedev competition is over! It&amp;rsquo;s incredible to think that this thing has been running for half a decade.
+So the way this competition worked this year is that there are four themes announced at the beginning of the week, which were: Chain Reaction | Alien Invasion | Assassination | Castles. And each contestant needs to pick two of those and make a game around them, with a week to do so.</description>
+    </item>
+    
+    <item>
+      <title>Open-Sourcing Old Projects</title>
+      <link>https://davegill.io/blog/open-sourcing-old-projects/</link>
+      <pubDate>Mon, 19 Jun 2017 23:43:38 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/open-sourcing-old-projects/</guid>
+      <description>I have made the decision to open-source some of my old projects onto Github. These are ones that have not seen any love in a while.
+So with no further ado I am excited to announce the open-source debut of 3 such projects:
+ PaprikaLang - A hand-rolled compiler targeting .Net. The Paprika language itself is also an experiment to disguise certain key functional techniques (like reduce/fold and immutability) and present in them more palatable way for the procedurally minded.</description>
+    </item>
+    
+    <item>
+      <title>Week of Awesome IV - Gamut of Blob - Postmortem</title>
+      <link>https://davegill.io/blog/week-of-awesome-4-post-mortem/</link>
+      <pubDate>Mon, 15 Aug 2016 23:44:26 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/week-of-awesome-4-post-mortem/</guid>
+      <description>Embarrassingly I haven&amp;rsquo;t used this blog in 2 years and that was for my WoA2 postmortem!
+Well WoA4 is over and I am super pleased with my entry. It is somehow more complete and polished than I had anticipated to achieve considering I had a full week of work and a couple of weekend commitments that would see me Macbook-bound for the majority of the weekend.
+This year announced 4 themes and contestants were expected to select and incorporate 2 of these for their game: Shadows, Evolution, Ruins, Undead.</description>
+    </item>
+    
+    <item>
+      <title>Save My Toys: A Walkthrough (Week of Awesome II)</title>
+      <link>https://davegill.io/blog/save-my-toys-a-walkthrough/</link>
+      <pubDate>Sun, 12 Oct 2014 23:35:58 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/save-my-toys-a-walkthrough/</guid>
+      <description>First off I am delighted to have placed 5th in the competition overall!
+Due to the great response I&amp;rsquo;ve had to the game, from other competitors and the judges I have decided to record a quick playthrough of my Week of Awesome II competition entry: Save My Toys.
+The video quality is bit low but this shows the full extent of the game and the solutions I originally envisaged - although some levels have multiple solutions either by design or not quite intentionally.</description>
+    </item>
+    
+    <item>
+      <title>&#34;Week of Awesome II&#34; - Post-Mortem</title>
+      <link>https://davegill.io/blog/week-of-awesome-2-post-mortem/</link>
+      <pubDate>Wed, 01 Oct 2014 17:43:42 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/week-of-awesome-2-post-mortem/</guid>
+      <description>Amazingly it has been a whole year since Gamedev.net hosted the first Week of Awesome competition. I competed last year and wrote a post-mortem of my game so it&amp;rsquo;s that time again! A bunch of people have already written up post-mortems, which is great to see. As far as I recall last year only a couple of us did.
+This year the rules were much the same: A theme is announced at the start and 7 days with which to implement that into a playable game.</description>
+    </item>
+    
+    <item>
+      <title>My &#34;Week of Awesome&#34; Competition Entry: Post-Mortem</title>
+      <link>https://davegill.io/blog/week-of-awesome-1-post-mortem/</link>
+      <pubDate>Sun, 08 Sep 2013 01:18:41 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/week-of-awesome-1-post-mortem/</guid>
+      <description>So it&amp;rsquo;s been a while since I last posted but here I am writing a new entry!
+The other week I competed in the unofficial GameDev.net &amp;lsquo;The Week of Awesome&amp;rsquo; game development competition. The idea is you&amp;rsquo;re given a week to develop a game and the game must fit a theme which is only announced at the very start of the competition. The theme was: &amp;ldquo;What if Dinosaurs hadn&amp;rsquo;t gone extinct?</description>
+    </item>
+    
+  </channel>
+</rss>

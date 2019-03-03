@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer Hardware on Dave Gill</title>
+    <link>https://davegill.io/tags/computer-hardware/</link>
+    <description>Recent content in Computer Hardware on Dave Gill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>Copyright © {year} David Gill; all rights reserved.</copyright>
+    <lastBuildDate>Thu, 14 Nov 2013 20:26:39 +0000</lastBuildDate>
+    
+	<atom:link href="https://davegill.io/tags/computer-hardware/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>New PC!</title>
+      <link>https://davegill.io/blog/new-pc/</link>
+      <pubDate>Thu, 14 Nov 2013 20:26:39 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/new-pc/</guid>
+      <description>So I am the happy owner a shiny new self-built PC and so far I&amp;rsquo;m very pleased with it.
+This is the first time I have built my own computer and, really, this is the first desktop PC I have owned (although I pretty much exclusively used my parent&amp;rsquo;s desktop when I lived at home). Until now I have been a laptop-man. I&amp;rsquo;m on my second laptop currently and it&amp;rsquo;s probably close to being replaced with a new one soon.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en-gb">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>The WordPress Scheduler: wp-cron.php - Dave Gill</title>
+    <meta name="generator" content="Hugo 0.53" />
+    <meta name="referrer" content="origin" />
+    <meta name="author" content="David Gill" />
+    <meta name="description" content="A blog about programming, electronics and other techie things." />
+    <meta name="copyright" content="Copyright © 2019 David Gill; all rights reserved." />
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="The WordPress Scheduler: wp-cron.php"/>
+<meta name="twitter:description" content="So, I recently noticed that my site was not doing its automatic backups. In fact it had never done a backup and I simply had not bothered to check!
+I use UpdraftPlus to do my site backups, it is a WordPress plugin that zips up the database and uploaded files and sends them to you (I have it send them to my DropBox). After a bit of investigation and following some of the debug steps on their site I came to the conclusion that it must be WordPress&rsquo;s internal scheduler to blame."/>
+<meta name="twitter:site" content="@daveagill"/>
+
+    <meta property="og:title" content="The WordPress Scheduler: wp-cron.php" />
+<meta property="og:description" content="So, I recently noticed that my site was not doing its automatic backups. In fact it had never done a backup and I simply had not bothered to check!
+I use UpdraftPlus to do my site backups, it is a WordPress plugin that zips up the database and uploaded files and sends them to you (I have it send them to my DropBox). After a bit of investigation and following some of the debug steps on their site I came to the conclusion that it must be WordPress&rsquo;s internal scheduler to blame." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://davegill.io/blog/the-wordpress-scheduler-wp-cron-php/" /><meta property="article:published_time" content="2013-09-09T12:00:19&#43;00:00"/>
+<meta property="article:modified_time" content="2013-09-09T12:00:19&#43;00:00"/>
+
+
+    
+
+    <link rel="canonical" href="https://davegill.io/blog/the-wordpress-scheduler-wp-cron-php/" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    
+    <link rel="stylesheet" href="/main.min.6f93b053ce4ff71133c78c16f7b233da4403b62fc8bbdf3e789337eeeee4ccdd.css" />
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css" integrity="sha256-w6kCMnFvhY2tI1OnsYR/rb5DG9yFGodJknvFZOkp51E=" crossorigin="anonymous" />
+    
+
+    
+
+    
+        
+            <link href="https://fonts.googleapis.com/css?family=Merriweather%3a300%2c300i%2c700%2c700i" rel="stylesheet" />
+        
+            <link href="https://fonts.googleapis.com/css?family=Raleway%3a400%2c600%2c700" rel="stylesheet" />
+        
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
+    
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+
+    
+        <a href="/">
+            <img class="logo" src="/logo.jpg" alt="logo">
+        </a>
+    
+
+    <div class="main-header-section">
+        <div>
+            <a href="/">
+                <h1>Dave Gill</h1>
+            </a>
+
+            <nav>
+                <ul>
+                    
+                        <li>
+                            <a  
+                                href="/"
+                                title="Home">↪ Home</a>
+                        </li>
+                    
+                        <li>
+                            <a  
+                                href="/blog/"
+                                title="Blog">↪ Blog</a>
+                        </li>
+                    
+                </ul>
+            </nav>
+        </div>
+
+        <div>
+            
+                <div class="social">
+    
+        <a href = "https://github.com/daveagill" alt="GitHub" class="fab fa-github" style="color:#000000;" target="_blank"></a>
+    
+        <a href = "https://twitter.com/daveagill" alt="Twitter" class="fab fa-twitter" style="color:#1da1f2;" target="_blank"></a>
+    
+        <a href = "https://linkedin.com/daveagill" alt="LinkedIn" class="fab fa-linkedin" style="color:#007bb5;" target="_blank"></a>
+    
+        <a href = "https://youtube.com/user/daveagill" alt="YouTube" class="fab fa-youtube" style="color:#ff0000;" target="_blank"></a>
+    
+        <a href = "https://flickr.com/photos/142957833@N08" alt="Flickr" class="fab fa-flickr" style="color:#ff0084;" target="_blank"></a>
+    
+        <a href = "/index.xml" alt="RSS Feed" class="fas fa-rss" style="color:#ee802f;" target="_blank"></a>
+    
+</div>
+            
+            
+        </div>
+    </div>
+
+</div>
+
+        <div id="content">
+            
+    <h1 class="post-heading">The WordPress Scheduler: wp-cron.php</h1>
+
+    <div class="frontmatter meta">
+        <ul class="article-info">
+            <li class="date" title='Mon Sep 9 2013 12:00:19 &#43;0000'>September 09, 2013</li>
+
+            
+                
+            
+
+            <li class="reading-time">5 minutes</li>
+        </ul>
+        <ul class="tags">
+            
+                <li><a href="/tags/web-development">Web Development</a></li>
+            
+                <li><a href="/tags/wordpress">WordPress</a></li>
+            
+                <li><a href="/tags/sysadmin">SysAdmin</a></li>
+            
+        </ul>
+    </div>
+
+    <div class="markdown">
+    <p>So, I recently noticed that my site was not doing its automatic backups. In fact it had never done a backup and I simply had not bothered to check!</p>
+
+<p>I use UpdraftPlus to do my site backups, it is a WordPress plugin that zips up the database and uploaded files and sends them to you (I have it send them to my DropBox). After a bit of investigation and following some of the debug steps on their site I came to the conclusion that it must be WordPress&rsquo;s internal scheduler to blame. Without the scheduler the backups will never get kicked off and other things like checking for updates may be failing too. Question was, why was the scheduler borked?</p>
+
+<p>To understand this we first have to understand how the scheduler works in WordPress.</p>
+
+<p>It basically takes the form of wp-cron.php, a little script that checks to see if there is any scheduled work to do and, if there is, then it performs the necessary processing. This script is called whether a page is loaded on a WP site.</p>
+
+<p>Already, this has some consequences (and some potential red-herrings for my investigation). Clearly if the cron script is only invoked when there is site activity then for a lowly unloved site like mine the cron script isn&rsquo;t going to get called very regularly and scheduled tasks are not going take place on-time. Maybe the sheer amount of spam comments I get would keep things ticking over, I don&rsquo;t know. One day, when this site goes viral becomes an internet sensation, the vast quantity of page views would actually keep the cron script too busy, clearly it doesn&rsquo;t need to be called hundreds of time a minute! In fact as I understand it, in previous versions of WP concurrent invocations could cause problems; a problem that is solved these days using locks.</p>
+
+<p>You might wonder whether page loading is slowed down for those people who happen to visit the site when there is a scheduled task to perform. Fortunately this is not the case. The cron script is initiated concurrently.</p>
+
+<p>WordPress launches the concurrent task by making an HTTP request back to itself, thereby spawning a second server-side thread to handle the request. Something like this:</p>
+
+<pre><code>GET: http://www.yoursite.co.uk/wp-cron.php
+</code></pre>
+
+<p>Unfortunately this could fail for all kinds of reasons. LIke not being able to resolve the DNS name, for example.</p>
+
+<p>I use a shared hosting provider. This website is hosted on some server alongside a bunch of other websites. The overall server configuration is therefore out of my control. It turns out that a lot of hosting providers (including mine) disable loopback requests. In other words the server is unable to invoke a request on itself. Apparently this is for security reasons, perhaps to prevent some kind of infinite request loop. Personally I&rsquo;m inclined to disagree, I cannot think of any particularly good reason to do this; there is nothing malevolent that the machine could do by calling back to itself that couldn&rsquo;t also be achieved externally; they&rsquo;re just web calls after all!</p>
+
+<p>Initially I wasn&rsquo;t sure if this was really the case for me. I couldn&rsquo;t see anything in the logs about failed attempts to invoke wp-cron. But I had a script tat makes HTTP GET calls and using that I proved that it was indeed the case and showed empirically that such failures (which were request denied errors) are not logged for some reason.</p>
+
+<p>So what is the solution? Well there are two possible solutions&hellip;</p>
+
+<p>One is that WordPress actually has a second way to trigger concurrent work, you just have to enable it. It works by sending the user on a redirect and hijacking their original request to perform the cron work. I don&rsquo;t imagine that is the most pleasant user experience for the person visiting your site though.</p>
+
+<p>Another solution - the one I opted for - is to invoke wp-cron.php periodically from a genuine cron-job configured on the server. For many people this may not be a viable option if they don&rsquo;t have access to cron, or if they lack the technical skills to use it.</p>
+
+<p>Luckily my provider exposes a UI through CPanel that lets me configure up to 3 scheduled tasks. Of course I only need one for this and it would be trivial to write some kind of program that used a single cronjob but multiplexed that out to emulate an unlimited number of scheduled tasks.</p>
+
+<p>The ideal way (perhaps) to have cron invoke wp-cron would be to use wget to make a web request:</p>
+
+<pre><code>/usr/bin/wget http://yoursite.co.uk/wp-cron.php
+</code></pre>
+
+<p>Alas, that would obviously still involve the loopback, from which I am blocked, so it was not an option for me. Instead I just run php directly over the script. Which seems to work just fine:</p>
+
+<pre><code>/usr/bin/php5 /path/to/wp-cron.php
+</code></pre>
+
+<p>I configured the cronjob to run every half an hour. A lot of people seem to run it more frequently even than that! Seems like overkill to me. I suspect you could get away with running it less than once a day in reality.</p>
+
+<p>So now I have smooth-running automatic backups of my WordPress database and files 🙂</p>
+
+<p>It only seems appropriate to use the scheduler to publish this post. It was actually written on September 8th 2013, but as I&rsquo;ve recently published a post just yesterday I will schedule this one for lunchtime tomorrow.</p>
+
+</div>
+    
+    
+        <div class="posts-navigation">
+            
+                <a class="prev" href="/blog/week-of-awesome-1-post-mortem/">My &#34;Week of Awesome&#34; Competition Entry: Post-Mortem</a>
+            
+            
+                <a class="next" href="/blog/first-time-fun-with-an-arduino/">First-time fun with an Arduino</a>
+            
+        </div>
+    
+    
+    
+<div id="disqus_thread"></div>
+<script>
+    (function() {
+        
+            var disqusURL = 'https:\/\/davegill.io\/blog\/the-wordpress-scheduler-wp-cron-php\/';
+        
+
+        if (disqusURL.indexOf("localhost") != -1 || disqusURL.indexOf("127.0.0.1") != -1) {
+            document.getElementById('disqus_thread').innerHTML = '<p>Disqus comments are not available by default when the website is previewed locally. Set Params.disqusBaseURL in config.toml to enable local comments.</p>';
+            return;
+        }
+
+        window.disqus_config = function () {
+            this.page.title = 'The WordPress Scheduler: wp-cron.php';
+            this.page.identifier = 'the-wordpress-scheduler-wp-cron-php';
+            this.page.url = disqusURL;
+        }
+
+        var d = document, s = d.createElement('script');
+        s.src = 'https://dave-gill.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>
+    <p>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></p>
+</noscript>
+
+
+        </div>
+        <div id="footer">
+        
+            <div class="social">
+    
+        <a href = "https://github.com/daveagill" alt="GitHub" class="fab fa-github" style="color:#000000;" target="_blank"></a>
+    
+        <a href = "https://twitter.com/daveagill" alt="Twitter" class="fab fa-twitter" style="color:#1da1f2;" target="_blank"></a>
+    
+        <a href = "https://linkedin.com/daveagill" alt="LinkedIn" class="fab fa-linkedin" style="color:#007bb5;" target="_blank"></a>
+    
+        <a href = "https://youtube.com/user/daveagill" alt="YouTube" class="fab fa-youtube" style="color:#ff0000;" target="_blank"></a>
+    
+        <a href = "https://flickr.com/photos/142957833@N08" alt="Flickr" class="fab fa-flickr" style="color:#ff0084;" target="_blank"></a>
+    
+        <a href = "/index.xml" alt="RSS Feed" class="fas fa-rss" style="color:#ee802f;" target="_blank"></a>
+    
+</div>
+        
+        
+        
+    
+        
+            <span class="copyright">Copyright © 2019 David Gill; all rights reserved.</span>
+        
+    </div>
+    
+    </div>
+    
+    
+
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+        <script>
+            window.addEventListener('load', function() {
+                hljs.initHighlighting();
+            }, true);
+        </script>
+    
+
+    
+
+    
+    
+</body>
+
+</html>

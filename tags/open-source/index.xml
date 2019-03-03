@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Open Source on Dave Gill</title>
+    <link>https://davegill.io/tags/open-source/</link>
+    <description>Recent content in Open Source on Dave Gill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>Copyright © {year} David Gill; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 19 Jun 2017 23:43:38 +0000</lastBuildDate>
+    
+	<atom:link href="https://davegill.io/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Open-Sourcing Old Projects</title>
+      <link>https://davegill.io/blog/open-sourcing-old-projects/</link>
+      <pubDate>Mon, 19 Jun 2017 23:43:38 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/open-sourcing-old-projects/</guid>
+      <description>I have made the decision to open-source some of my old projects onto Github. These are ones that have not seen any love in a while.
+So with no further ado I am excited to announce the open-source debut of 3 such projects:
+ PaprikaLang - A hand-rolled compiler targeting .Net. The Paprika language itself is also an experiment to disguise certain key functional techniques (like reduce/fold and immutability) and present in them more palatable way for the procedurally minded.</description>
+    </item>
+    
+  </channel>
+</rss>

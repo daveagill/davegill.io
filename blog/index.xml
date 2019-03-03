@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blogs on Dave Gill</title>
+    <link>https://davegill.io/blog/</link>
+    <description>Recent content in Blogs on Dave Gill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>Copyright © {year} David Gill; all rights reserved.</copyright>
+    <lastBuildDate>Fri, 02 Feb 2018 18:37:46 +0000</lastBuildDate>
+    
+	<atom:link href="https://davegill.io/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Some gamedev videos</title>
+      <link>https://davegill.io/blog/some-gamedev-videos/</link>
+      <pubDate>Fri, 02 Feb 2018 18:37:46 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/some-gamedev-videos/</guid>
+      <description>I have been meaning to record some playthrough videos of my two most recent gamedev.net &amp;lsquo;Week of Awesome&amp;rsquo; competition entries for 2016 &amp;amp; 2017 and finally got around to it.
+You can already find a video of my 2014 entry &amp;lsquo;Save My Toys&amp;rsquo; in an earlier blog entry.
+The challenge was to make a game from scratch in a week. Four themes are announced, contestants must pick two of those and incorporate them into the game somehow.</description>
+    </item>
+    
+    <item>
+      <title>Fluid Rendering with Box2D</title>
+      <link>https://davegill.io/blog/fluid-rendering-with-box2d/</link>
+      <pubDate>Sun, 20 Aug 2017 00:34:17 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/fluid-rendering-with-box2d/</guid>
+      <description>This is a technical article about how I implemented the fluid in my game &amp;ldquo;Invasion of the Liquid Snatchers!&amp;rdquo; which was my entry for the Week of Awesome 5 gamedev competition.
+One of the biggest compliments I&amp;rsquo;ve received about the game is when people think the fluid simulation is some kind of soft-body physics or a true fluid simulation. But it isn&amp;rsquo;t!
+The simulation is achieved using Box2D doing regular hard-body collisions using lots of little (non-rotating) circle-shaped bodies.</description>
+    </item>
+    
+    <item>
+      <title>Week of Awesome 5 - Post-Mortem</title>
+      <link>https://davegill.io/blog/week-of-awesome-5-post-mortem/</link>
+      <pubDate>Sun, 20 Aug 2017 00:34:09 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/week-of-awesome-5-post-mortem/</guid>
+      <description>Well the 5th Week of Awesome Gamedev competition is over! It&amp;rsquo;s incredible to think that this thing has been running for half a decade.
+So the way this competition worked this year is that there are four themes announced at the beginning of the week, which were: Chain Reaction | Alien Invasion | Assassination | Castles. And each contestant needs to pick two of those and make a game around them, with a week to do so.</description>
+    </item>
+    
+    <item>
+      <title>Open-Sourcing Old Projects</title>
+      <link>https://davegill.io/blog/open-sourcing-old-projects/</link>
+      <pubDate>Mon, 19 Jun 2017 23:43:38 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/open-sourcing-old-projects/</guid>
+      <description>I have made the decision to open-source some of my old projects onto Github. These are ones that have not seen any love in a while.
+So with no further ado I am excited to announce the open-source debut of 3 such projects:
+ PaprikaLang - A hand-rolled compiler targeting .Net. The Paprika language itself is also an experiment to disguise certain key functional techniques (like reduce/fold and immutability) and present in them more palatable way for the procedurally minded.</description>
+    </item>
+    
+    <item>
+      <title>Week of Awesome IV - Gamut of Blob - Postmortem</title>
+      <link>https://davegill.io/blog/week-of-awesome-4-post-mortem/</link>
+      <pubDate>Mon, 15 Aug 2016 23:44:26 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/week-of-awesome-4-post-mortem/</guid>
+      <description>Embarrassingly I haven&amp;rsquo;t used this blog in 2 years and that was for my WoA2 postmortem!
+Well WoA4 is over and I am super pleased with my entry. It is somehow more complete and polished than I had anticipated to achieve considering I had a full week of work and a couple of weekend commitments that would see me Macbook-bound for the majority of the weekend.
+This year announced 4 themes and contestants were expected to select and incorporate 2 of these for their game: Shadows, Evolution, Ruins, Undead.</description>
+    </item>
+    
+    <item>
+      <title>Save My Toys: A Walkthrough (Week of Awesome II)</title>
+      <link>https://davegill.io/blog/save-my-toys-a-walkthrough/</link>
+      <pubDate>Sun, 12 Oct 2014 23:35:58 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/save-my-toys-a-walkthrough/</guid>
+      <description>First off I am delighted to have placed 5th in the competition overall!
+Due to the great response I&amp;rsquo;ve had to the game, from other competitors and the judges I have decided to record a quick playthrough of my Week of Awesome II competition entry: Save My Toys.
+The video quality is bit low but this shows the full extent of the game and the solutions I originally envisaged - although some levels have multiple solutions either by design or not quite intentionally.</description>
+    </item>
+    
+    <item>
+      <title>&#34;Week of Awesome II&#34; - Post-Mortem</title>
+      <link>https://davegill.io/blog/week-of-awesome-2-post-mortem/</link>
+      <pubDate>Wed, 01 Oct 2014 17:43:42 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/week-of-awesome-2-post-mortem/</guid>
+      <description>Amazingly it has been a whole year since Gamedev.net hosted the first Week of Awesome competition. I competed last year and wrote a post-mortem of my game so it&amp;rsquo;s that time again! A bunch of people have already written up post-mortems, which is great to see. As far as I recall last year only a couple of us did.
+This year the rules were much the same: A theme is announced at the start and 7 days with which to implement that into a playable game.</description>
+    </item>
+    
+    <item>
+      <title>My New DSLR</title>
+      <link>https://davegill.io/blog/my-new-dslr/</link>
+      <pubDate>Sat, 02 Aug 2014 22:49:41 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/my-new-dslr/</guid>
+      <description>A few weeks ago, on a whim, I purchased a Canon 700D DSLR. I have never owned a DSLR before and didn&amp;rsquo;t have a particularly good grasp of the concepts so I did a bunch of research into the various systems available (from Canon, Nikon, Sony and also the popular Micro four thirds format) before deciding to settle on Canon.
+   The camera came with a 18-55mm kit lens and I have since purchased a 50mm 1.</description>
+    </item>
+    
+    <item>
+      <title>Installing CyanogenMod on my Samsung S3-mini</title>
+      <link>https://davegill.io/blog/installing-cyanogenmod-on-my-samsung-s3-mini/</link>
+      <pubDate>Tue, 15 Apr 2014 13:32:38 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/installing-cyanogenmod-on-my-samsung-s3-mini/</guid>
+      <description>Why did I want to install a new Android? I&amp;rsquo;ve been putting up with an annoying issue on my S3-mini (GT-I8190N) for a few months now - the screen will take forever (many seconds) to wake up if the phone&amp;rsquo;s been sleeping for a while. Even worse is that this will even happen when someone is ringing me!
+Most people would probably deal with it, but it bugs the hell out of me and a factory reset didn&amp;rsquo;t help.</description>
+    </item>
+    
+    <item>
+      <title>New PC!</title>
+      <link>https://davegill.io/blog/new-pc/</link>
+      <pubDate>Thu, 14 Nov 2013 20:26:39 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/new-pc/</guid>
+      <description>So I am the happy owner a shiny new self-built PC and so far I&amp;rsquo;m very pleased with it.
+This is the first time I have built my own computer and, really, this is the first desktop PC I have owned (although I pretty much exclusively used my parent&amp;rsquo;s desktop when I lived at home). Until now I have been a laptop-man. I&amp;rsquo;m on my second laptop currently and it&amp;rsquo;s probably close to being replaced with a new one soon.</description>
+    </item>
+    
+    <item>
+      <title>On Becoming Engaged!</title>
+      <link>https://davegill.io/blog/on-becoming-engaged/</link>
+      <pubDate>Wed, 13 Nov 2013 20:25:49 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/on-becoming-engaged/</guid>
+      <description>I am now engaged to my girlfriend-come-fiancée of 5 years!!
+   We&amp;rsquo;re very pleased!
+I proposed on Thursday October 24th at Anglesey Abbey in their Dahlia garden and successfully managed to conceal the ring in its box for the whole trip until that moment - so it was total surprise to her! 😄
+Everybody always asks if I got down on one knee - and I did! Since it makes for a bit of a spectacle I waited until everybody else had gone away first so we could have our moment in private.</description>
+    </item>
+    
+    <item>
+      <title>First-time fun with an Arduino</title>
+      <link>https://davegill.io/blog/first-time-fun-with-an-arduino/</link>
+      <pubDate>Mon, 16 Sep 2013 22:01:55 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/first-time-fun-with-an-arduino/</guid>
+      <description>So the other day I got an early birthday present courtesy of my lovely girlfriend, an Arduino Mega2560 purchased from CPC.
+I&amp;rsquo;ve only had a few hours to play around with it so far, but I have a basic circuit and Sketch (which is Arduino parlance for the C program that is to be uploaded to the ATmega chip), as you can see&amp;hellip;
+   It is really basic at the moment, the program listens for input from the button and every time you press it either pauses or unpauses the PWM (Pulse Width Modulation) in-and-out fading of the LED.</description>
+    </item>
+    
+    <item>
+      <title>The WordPress Scheduler: wp-cron.php</title>
+      <link>https://davegill.io/blog/the-wordpress-scheduler-wp-cron-php/</link>
+      <pubDate>Mon, 09 Sep 2013 12:00:19 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/the-wordpress-scheduler-wp-cron-php/</guid>
+      <description>So, I recently noticed that my site was not doing its automatic backups. In fact it had never done a backup and I simply had not bothered to check!
+I use UpdraftPlus to do my site backups, it is a WordPress plugin that zips up the database and uploaded files and sends them to you (I have it send them to my DropBox). After a bit of investigation and following some of the debug steps on their site I came to the conclusion that it must be WordPress&amp;rsquo;s internal scheduler to blame.</description>
+    </item>
+    
+    <item>
+      <title>My &#34;Week of Awesome&#34; Competition Entry: Post-Mortem</title>
+      <link>https://davegill.io/blog/week-of-awesome-1-post-mortem/</link>
+      <pubDate>Sun, 08 Sep 2013 01:18:41 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/week-of-awesome-1-post-mortem/</guid>
+      <description>So it&amp;rsquo;s been a while since I last posted but here I am writing a new entry!
+The other week I competed in the unofficial GameDev.net &amp;lsquo;The Week of Awesome&amp;rsquo; game development competition. The idea is you&amp;rsquo;re given a week to develop a game and the game must fit a theme which is only announced at the very start of the competition. The theme was: &amp;ldquo;What if Dinosaurs hadn&amp;rsquo;t gone extinct?</description>
+    </item>
+    
+    <item>
+      <title>Hello, World</title>
+      <link>https://davegill.io/blog/hello-world/</link>
+      <pubDate>Fri, 29 Mar 2013 19:22:40 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/hello-world/</guid>
+      <description>Welcome to my new website &amp;amp; blog!
+This is the latest rendition of gilldave.co.uk and this time I am building it on the WordPress platform. Doing so affords many benefits over home-grown solutions - mainly I get a bunch of cool stuff (blog, rich text editor, management console, plugins, comments, etc, etc) for almost none of the effort compared to rolling my own or gluing together 3rd party components.
+I have not owned a personal blog before but I often get into the spirit of wanting to write for one, especially during the early stages of a personal project or when I succeed at some challenging aspect of software development.</description>
+    </item>
+    
+  </channel>
+</rss>

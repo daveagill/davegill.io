@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on Dave Gill</title>
+    <link>https://davegill.io/tags/android/</link>
+    <description>Recent content in Android on Dave Gill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>Copyright © {year} David Gill; all rights reserved.</copyright>
+    <lastBuildDate>Tue, 15 Apr 2014 13:32:38 +0000</lastBuildDate>
+    
+	<atom:link href="https://davegill.io/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Installing CyanogenMod on my Samsung S3-mini</title>
+      <link>https://davegill.io/blog/installing-cyanogenmod-on-my-samsung-s3-mini/</link>
+      <pubDate>Tue, 15 Apr 2014 13:32:38 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/installing-cyanogenmod-on-my-samsung-s3-mini/</guid>
+      <description>Why did I want to install a new Android? I&amp;rsquo;ve been putting up with an annoying issue on my S3-mini (GT-I8190N) for a few months now - the screen will take forever (many seconds) to wake up if the phone&amp;rsquo;s been sleeping for a while. Even worse is that this will even happen when someone is ringing me!
+Most people would probably deal with it, but it bugs the hell out of me and a factory reset didn&amp;rsquo;t help.</description>
+    </item>
+    
+  </channel>
+</rss>

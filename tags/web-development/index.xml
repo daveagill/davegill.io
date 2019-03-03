@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web Development on Dave Gill</title>
+    <link>https://davegill.io/tags/web-development/</link>
+    <description>Recent content in Web Development on Dave Gill</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <copyright>Copyright © {year} David Gill; all rights reserved.</copyright>
+    <lastBuildDate>Mon, 09 Sep 2013 12:00:19 +0000</lastBuildDate>
+    
+	<atom:link href="https://davegill.io/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The WordPress Scheduler: wp-cron.php</title>
+      <link>https://davegill.io/blog/the-wordpress-scheduler-wp-cron-php/</link>
+      <pubDate>Mon, 09 Sep 2013 12:00:19 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/the-wordpress-scheduler-wp-cron-php/</guid>
+      <description>So, I recently noticed that my site was not doing its automatic backups. In fact it had never done a backup and I simply had not bothered to check!
+I use UpdraftPlus to do my site backups, it is a WordPress plugin that zips up the database and uploaded files and sends them to you (I have it send them to my DropBox). After a bit of investigation and following some of the debug steps on their site I came to the conclusion that it must be WordPress&amp;rsquo;s internal scheduler to blame.</description>
+    </item>
+    
+    <item>
+      <title>Hello, World</title>
+      <link>https://davegill.io/blog/hello-world/</link>
+      <pubDate>Fri, 29 Mar 2013 19:22:40 +0000</pubDate>
+      
+      <guid>https://davegill.io/blog/hello-world/</guid>
+      <description>Welcome to my new website &amp;amp; blog!
+This is the latest rendition of gilldave.co.uk and this time I am building it on the WordPress platform. Doing so affords many benefits over home-grown solutions - mainly I get a bunch of cool stuff (blog, rich text editor, management console, plugins, comments, etc, etc) for almost none of the effort compared to rolling my own or gluing together 3rd party components.
+I have not owned a personal blog before but I often get into the spirit of wanting to write for one, especially during the early stages of a personal project or when I succeed at some challenging aspect of software development.</description>
+    </item>
+    
+  </channel>
+</rss>

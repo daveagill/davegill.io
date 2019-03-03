@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en-gb">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>First-time fun with an Arduino - Dave Gill</title>
+    <meta name="generator" content="Hugo 0.53" />
+    <meta name="referrer" content="origin" />
+    <meta name="author" content="David Gill" />
+    <meta name="description" content="A blog about programming, electronics and other techie things." />
+    <meta name="copyright" content="Copyright © 2019 David Gill; all rights reserved." />
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="First-time fun with an Arduino"/>
+<meta name="twitter:description" content="So the other day I got an early birthday present courtesy of my lovely girlfriend, an Arduino Mega2560 purchased from CPC.
+I&rsquo;ve only had a few hours to play around with it so far, but I have a basic circuit and Sketch (which is Arduino parlance for the C program that is to be uploaded to the ATmega chip), as you can see&hellip;
+   It is really basic at the moment, the program listens for input from the button and every time you press it either pauses or unpauses the PWM (Pulse Width Modulation) in-and-out fading of the LED."/>
+<meta name="twitter:site" content="@daveagill"/>
+
+    <meta property="og:title" content="First-time fun with an Arduino" />
+<meta property="og:description" content="So the other day I got an early birthday present courtesy of my lovely girlfriend, an Arduino Mega2560 purchased from CPC.
+I&rsquo;ve only had a few hours to play around with it so far, but I have a basic circuit and Sketch (which is Arduino parlance for the C program that is to be uploaded to the ATmega chip), as you can see&hellip;
+   It is really basic at the moment, the program listens for input from the button and every time you press it either pauses or unpauses the PWM (Pulse Width Modulation) in-and-out fading of the LED." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://davegill.io/blog/first-time-fun-with-an-arduino/" /><meta property="article:published_time" content="2013-09-16T22:01:55&#43;00:00"/>
+<meta property="article:modified_time" content="2013-09-16T22:01:55&#43;00:00"/>
+
+
+    
+
+    <link rel="canonical" href="https://davegill.io/blog/first-time-fun-with-an-arduino/" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    
+    <link rel="stylesheet" href="/main.min.6f93b053ce4ff71133c78c16f7b233da4403b62fc8bbdf3e789337eeeee4ccdd.css" />
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css" integrity="sha256-w6kCMnFvhY2tI1OnsYR/rb5DG9yFGodJknvFZOkp51E=" crossorigin="anonymous" />
+    
+
+    
+
+    
+        
+            <link href="https://fonts.googleapis.com/css?family=Merriweather%3a300%2c300i%2c700%2c700i" rel="stylesheet" />
+        
+            <link href="https://fonts.googleapis.com/css?family=Raleway%3a400%2c600%2c700" rel="stylesheet" />
+        
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
+    
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+
+    
+        <a href="/">
+            <img class="logo" src="/logo.jpg" alt="logo">
+        </a>
+    
+
+    <div class="main-header-section">
+        <div>
+            <a href="/">
+                <h1>Dave Gill</h1>
+            </a>
+
+            <nav>
+                <ul>
+                    
+                        <li>
+                            <a  
+                                href="/"
+                                title="Home">↪ Home</a>
+                        </li>
+                    
+                        <li>
+                            <a  
+                                href="/blog/"
+                                title="Blog">↪ Blog</a>
+                        </li>
+                    
+                </ul>
+            </nav>
+        </div>
+
+        <div>
+            
+                <div class="social">
+    
+        <a href = "https://github.com/daveagill" alt="GitHub" class="fab fa-github" style="color:#000000;" target="_blank"></a>
+    
+        <a href = "https://twitter.com/daveagill" alt="Twitter" class="fab fa-twitter" style="color:#1da1f2;" target="_blank"></a>
+    
+        <a href = "https://linkedin.com/daveagill" alt="LinkedIn" class="fab fa-linkedin" style="color:#007bb5;" target="_blank"></a>
+    
+        <a href = "https://youtube.com/user/daveagill" alt="YouTube" class="fab fa-youtube" style="color:#ff0000;" target="_blank"></a>
+    
+        <a href = "https://flickr.com/photos/142957833@N08" alt="Flickr" class="fab fa-flickr" style="color:#ff0084;" target="_blank"></a>
+    
+        <a href = "/index.xml" alt="RSS Feed" class="fas fa-rss" style="color:#ee802f;" target="_blank"></a>
+    
+</div>
+            
+            
+        </div>
+    </div>
+
+</div>
+
+        <div id="content">
+            
+    <h1 class="post-heading">First-time fun with an Arduino</h1>
+
+    <div class="frontmatter meta">
+        <ul class="article-info">
+            <li class="date" title='Mon Sep 16 2013 22:01:55 &#43;0000'>September 16, 2013</li>
+
+            
+                
+            
+
+            <li class="reading-time">2 minutes</li>
+        </ul>
+        <ul class="tags">
+            
+                <li><a href="/tags/arduino">Arduino</a></li>
+            
+                <li><a href="/tags/c&#43;&#43;">C&#43;&#43;</a></li>
+            
+                <li><a href="/tags/electronics">Electronics</a></li>
+            
+        </ul>
+    </div>
+
+    <div class="markdown">
+    <p>So the other day I got an early birthday present courtesy of my lovely girlfriend, an <a href="http://arduino.cc/en/Main/ArduinoBoardMega2560">Arduino Mega2560</a> purchased from CPC.</p>
+
+<p>I&rsquo;ve only had a few hours to play around with it so far, but I have a basic circuit and Sketch (which is Arduino parlance for the C program that is to be uploaded to the ATmega chip), as you can see&hellip;</p>
+
+
+
+
+
+
+
+    
+    
+
+    <figure>
+        <a href="/blog/first-time-fun-with-an-arduino/arduino.jpg">
+            <img
+                src="/blog/first-time-fun-with-an-arduino/arduino_hu9c332ec1aa5e6de2e58c4c132c16864b_2572552_0x300_resize_q75_box.jpg"
+                width="400"
+                height="300"
+                title="Arduino pulsing an LED"
+                alt="Arduino pulsing an LED" >
+        </a>
+    </figure>
+
+
+<p>It is really basic at the moment, the program listens for input from the button and every time you press it either pauses or unpauses the <a href="http://en.wikipedia.org/wiki/Pulse-width_modulation">PWM (Pulse Width Modulation)</a> in-and-out fading of the LED.</p>
+
+<p>The button is wired to a 10k pull-down resistor. The Arduino actually has the ability to do this itself, you get to choose whether you pull-down yourself or leave it up to the Arduino - Actually I wonder if it is the Atmega chip doing the pulldown, rather than the Arduino.</p>
+
+<p>Every time you toggle the pause/unpause it sends a serial communication through the USB back for display on the Serial monitor (provided as part of the Arduino IDE). It&rsquo;s really easy to do, but quite a powerful feature built-in.</p>
+
+<p>I need to think up some interesting projects to do with it - Maybe some kind of robot? A robot arm? I have a RaspberryPi, maybe I can achieve something interesting if I wire them together?</p>
+
+</div>
+    
+    
+        <div class="posts-navigation">
+            
+                <a class="prev" href="/blog/the-wordpress-scheduler-wp-cron-php/">The WordPress Scheduler: wp-cron.php</a>
+            
+            
+                <a class="next" href="/blog/on-becoming-engaged/">On Becoming Engaged!</a>
+            
+        </div>
+    
+    
+    
+<div id="disqus_thread"></div>
+<script>
+    (function() {
+        
+            var disqusURL = 'https:\/\/davegill.io\/blog\/first-time-fun-with-an-arduino\/';
+        
+
+        if (disqusURL.indexOf("localhost") != -1 || disqusURL.indexOf("127.0.0.1") != -1) {
+            document.getElementById('disqus_thread').innerHTML = '<p>Disqus comments are not available by default when the website is previewed locally. Set Params.disqusBaseURL in config.toml to enable local comments.</p>';
+            return;
+        }
+
+        window.disqus_config = function () {
+            this.page.title = 'First-time fun with an Arduino';
+            this.page.identifier = 'first-time-fun-with-an-arduino';
+            this.page.url = disqusURL;
+        }
+
+        var d = document, s = d.createElement('script');
+        s.src = 'https://dave-gill.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>
+    <p>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></p>
+</noscript>
+
+
+        </div>
+        <div id="footer">
+        
+            <div class="social">
+    
+        <a href = "https://github.com/daveagill" alt="GitHub" class="fab fa-github" style="color:#000000;" target="_blank"></a>
+    
+        <a href = "https://twitter.com/daveagill" alt="Twitter" class="fab fa-twitter" style="color:#1da1f2;" target="_blank"></a>
+    
+        <a href = "https://linkedin.com/daveagill" alt="LinkedIn" class="fab fa-linkedin" style="color:#007bb5;" target="_blank"></a>
+    
+        <a href = "https://youtube.com/user/daveagill" alt="YouTube" class="fab fa-youtube" style="color:#ff0000;" target="_blank"></a>
+    
+        <a href = "https://flickr.com/photos/142957833@N08" alt="Flickr" class="fab fa-flickr" style="color:#ff0084;" target="_blank"></a>
+    
+        <a href = "/index.xml" alt="RSS Feed" class="fas fa-rss" style="color:#ee802f;" target="_blank"></a>
+    
+</div>
+        
+        
+        
+    
+        
+            <span class="copyright">Copyright © 2019 David Gill; all rights reserved.</span>
+        
+    </div>
+    
+    </div>
+    
+    
+
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+        <script>
+            window.addEventListener('load', function() {
+                hljs.initHighlighting();
+            }, true);
+        </script>
+    
+
+    
+
+    
+    
+</body>
+
+</html>
