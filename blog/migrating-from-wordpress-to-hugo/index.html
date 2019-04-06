@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en-gb">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <title>Migrating from WordPress to Hugo - Dave Gill</title>
+    <meta name="generator" content="Hugo 0.53" />
+    <meta name="referrer" content="origin" />
+    <meta name="author" content="David Gill" />
+    <meta name="description" content="A blog about programming, electronics and other techie things." />
+    <meta name="copyright" content="Copyright © 2019 David Gill; all rights reserved." />
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Migrating from WordPress to Hugo"/>
+<meta name="twitter:description" content="This guide will outline the process that I used when migrating this site from WordPress to Hugo.
+To follow these instructions you are going to need:
+ Hugo Git Node.js A Disqus account (if you want blog comments).  Step 1 - Convert Pages &amp; Posts  Login to your WordPress site and export to XML. This contains all your textual content, hyperlinks, tags &amp; categories, etc. But it does not include images."/>
+<meta name="twitter:site" content="@daveagill"/>
+
+    <meta property="og:title" content="Migrating from WordPress to Hugo" />
+<meta property="og:description" content="This guide will outline the process that I used when migrating this site from WordPress to Hugo.
+To follow these instructions you are going to need:
+ Hugo Git Node.js A Disqus account (if you want blog comments).  Step 1 - Convert Pages &amp; Posts  Login to your WordPress site and export to XML. This contains all your textual content, hyperlinks, tags &amp; categories, etc. But it does not include images." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://davegill.io/blog/migrating-from-wordpress-to-hugo/" /><meta property="article:published_time" content="2019-04-06T12:39:17&#43;01:00"/>
+<meta property="article:modified_time" content="2019-04-06T12:39:17&#43;01:00"/>
+
+
+    
+
+    <link rel="canonical" href="https://davegill.io/blog/migrating-from-wordpress-to-hugo/" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+
+    
+    <link rel="stylesheet" href="/main.min.1634b7766703c5360ff49ae3aba523541e59046e1a56432712a61af65dc4efb8.css" />
+
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css" integrity="sha256-w6kCMnFvhY2tI1OnsYR/rb5DG9yFGodJknvFZOkp51E=" crossorigin="anonymous" />
+    
+
+    
+
+    
+        
+            <link href="https://fonts.googleapis.com/css?family=Merriweather%3a300%2c300i%2c700%2c700i" rel="stylesheet" />
+        
+            <link href="https://fonts.googleapis.com/css?family=Raleway%3a400%2c600%2c700" rel="stylesheet" />
+        
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
+    
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+
+    
+        <a href="/">
+            <img class="logo" src="/logo.jpg" alt="logo">
+        </a>
+    
+
+    <div class="main-header-section">
+        <div>
+            <a href="/">
+                <h1>Dave Gill</h1>
+            </a>
+
+            <nav>
+                <ul>
+                    
+                        <li>
+                            <a  
+                                href="/"
+                                title="Home">↪&#xFE0E; Home</a>
+                        </li>
+                    
+                        <li>
+                            <a  
+                                href="/blog/"
+                                title="Blog">↪&#xFE0E; Blog</a>
+                        </li>
+                    
+                </ul>
+            </nav>
+        </div>
+
+        <div>
+            
+                <div class="social">
+    
+        <a href = "https://github.com/daveagill" alt="GitHub" class="fab fa-github" style="color:#000000;" target="_blank"></a>
+    
+        <a href = "https://twitter.com/daveagill" alt="Twitter" class="fab fa-twitter" style="color:#1da1f2;" target="_blank"></a>
+    
+        <a href = "https://uk.linkedin.com/in/daveagill" alt="LinkedIn" class="fab fa-linkedin" style="color:#007bb5;" target="_blank"></a>
+    
+        <a href = "https://youtube.com/user/daveagill" alt="YouTube" class="fab fa-youtube" style="color:#ff0000;" target="_blank"></a>
+    
+        <a href = "https://flickr.com/photos/142957833@N08" alt="Flickr" class="fab fa-flickr" style="color:#ff0084;" target="_blank"></a>
+    
+        <a href = "/index.xml" alt="RSS Feed" class="fas fa-rss" style="color:#ee802f;" target="_blank"></a>
+    
+</div>
+            
+            
+        </div>
+    </div>
+
+</div>
+
+        <div id="content">
+            
+    <h1 class="post-heading">Migrating from WordPress to Hugo</h1>
+
+    <div class="frontmatter meta">
+        <ul class="article-info">
+            <li class="date" title='Sat Apr 6 2019 12:39:17 BST'>April 06, 2019</li>
+
+            
+                
+            
+
+            <li class="reading-time">5 minutes</li>
+        </ul>
+        <ul class="tags">
+            
+                <li><a href="/tags/web-development">Web Development</a></li>
+            
+                <li><a href="/tags/wordpress">WordPress</a></li>
+            
+                <li><a href="/tags/hugo">Hugo</a></li>
+            
+        </ul>
+    </div>
+
+    <div class="markdown">
+    
+
+<p>This guide will outline the process that I used when migrating this site from WordPress to Hugo.</p>
+
+<p>To follow these instructions you are going to need:</p>
+
+<ul>
+<li>Hugo</li>
+<li>Git</li>
+<li>Node.js</li>
+<li>A Disqus account (if you want blog comments).</li>
+</ul>
+
+<h2 id="step-1-convert-pages-posts">Step 1 - Convert Pages &amp; Posts</h2>
+
+<ul>
+<li><p>Login to your WordPress site and export to XML. This contains all your textual content, hyperlinks, tags &amp; categories, etc. <strong>But it does not include images</strong>.</p></li>
+
+<li><p>I used a tool called <a href="https://github.com/palaniraja/blog2md">blog2md</a> to convert this XML files into a set of Markdown files. We have to clone it from Github and run it as a Node.js application:</p>
+
+<pre><code class="language-bash">git clone https://github.com/palaniraja/blog2md.git ~/blog2md
+cd ~/blog2md
+npm install
+node index.js w /path/to/your/wordpress-export.xml ./output
+</code></pre>
+
+<p>Note: On Windows replace <code>~/blog2md</code> with a proper Windows path such as <code>C:\Users\YourUserName\blog2md</code></p>
+
+<p>The generated Markdown (.md) files will be found in the output folder: <code>~/blog2md/output</code>.</p></li>
+
+<li><p>Manually delete any unwanted .md files.</p>
+
+<p>The tool converts <em>every</em> WordPress page into a corresponding Markdown file but in WordPress it is common for pages to also represent individual menus, headers, footers and other things. We don&rsquo;t need those for Hugo as they are configured separately (usually in the <code>config.toml</code> file but it depends on the theme).</p></li>
+
+<li><p>Go through the remaining files and fixup any missing paragraphs or other formatting issues.</p>
+
+<p>For some reason most of my converted posts lacked paragraphs entirely, but not all of them. I had to go through and manually insert the paragraph breaks. That wasn&rsquo;t too bad because this site isn&rsquo;t very big.</p></li>
+</ul>
+
+<h2 id="step-2-migrate-images">Step 2 - Migrate Images</h2>
+
+<p>I did this step manually by downloading the images from the old WordPress site (via the browser) and editing the markdown files to reference the new URL that they will have under the new site.</p>
+
+<p>I am using Hugo&rsquo;s new &lsquo;Page Bundles&rsquo; feature to keep images organised relative to the .md file. The alternative (and classic) option is to store images in the <code>/static</code> folder.</p>
+
+<p>Here&rsquo;s a comparison&hellip;</p>
+
+<p><strong>Without page-bundles:</strong></p>
+
+<ul>
+<li>Your page: <code>/hugo/content/posts/mypost.md</code></li>
+<li>Your images: <code>/hugo/static/img/lolcat.jpg</code></li>
+<li>Your markdown: <code>![This is a lolcat](/img/lolcat.jpg)</code></li>
+</ul>
+
+<p><strong>With page-bundles:</strong></p>
+
+<ul>
+<li>Your page: <code>/hugo/content/posts/mypost/index.md</code></li>
+<li>Your images: <code>/hugo/content/posts/mypost/lolcat.jpg</code></li>
+<li>Your markdown: <code>![This is a lolcat](lolcat.jpg)</code></li>
+</ul>
+
+<p>Using page-bundles keeps everything pertaining to a single page neatly together in one folder.</p>
+
+<p>If a post doesn&rsquo;t require images then I&rsquo;ll use a non-bundled page. <a href="https://github.com/daveagill/davegill.io-content/tree/master/content/blog">So I have a mix of bundled and non-bundled pages</a>. I personally don&rsquo;t mind that and opt for the simplest method that works, but if you would prefer to keep it consistent you need to decide which one to use.</p>
+
+<p>While I was at it, I reviewed where images where inserted within their surround text. I particularly had issues anytime I originally had left or right aligned images with text flowing around them because my <a href="https://github.com/daveagill/jormungandr">Jörmungandr theme for Hugo</a> does not support that.</p>
+
+<p>I also replaced the standard markdown image codes for specialised Hugo shortcodes provided by the theme. The standard syntax inserts images at full-size whereas the shortcodes allow for setting image dimensions and take care of generating lower resolution thumnbails.</p>
+
+<h2 id="step-3-fixup-the-frontmatter-optional">Step 3 - Fixup the Frontmatter (optional)</h2>
+
+<p>The conversion tool had generated frontmatter for each .md file, but there were a few things I wanted to change about it:</p>
+
+<ol>
+<li>It was formatted as JSON (indicated by the triple dashes: <code>---</code>) but I prefer it to be in TOML format. In fact the &ldquo;JSON&rdquo; wasn&rsquo;t even technically valid JSON although Hugo apparently had no problem with that.</li>
+<li>All of my Categories and Tags from WordPress had been collapsed together into a single list of Hugo&rsquo;s &lsquo;tag&rsquo; taxonomy.</li>
+<li>I wanted to define URL aliases to redirect from their original WordPress URLs to their new URLs.</li>
+</ol>
+
+<p>The first issue was easily to solve as Hugo has a way to convert frontmatter between formats:</p>
+
+<pre><code class="language-bash">hugo convert --toTOML
+</code></pre>
+
+<p>I had to manually resolve the tags and categories issue, but, I took it as an opportunity to review how I was using them and ended up making the decision not to use categories at all, just tags only. I also reduced the set of tags I was using to keep things simple.</p>
+
+<p>Finally I added URL aliases to the frontmatter so that all of my old WordPress URLs would continue to work. Hugo will generate trivial redirect pages at the alias URLs which redirect browsers to the real page. For example:</p>
+
+<pre><code class="language-toml">aliases = [&quot;/2017/08/fluid-rendering-with-box2d/&quot;]
+</code></pre>
+
+<p>When you generate the site you can see all of these redirect pages in the <code>/public</code> folder.</p>
+
+<h2 id="step-4-migrate-comments-to-disqus">Step 4 - Migrate Comments to Disqus</h2>
+
+<p>Disqus is a popular embeddable comment system and it supports import from WordPress relatively simply.</p>
+
+<p>First, sign up to Disqus and configure a new site (giving it a unique &ldquo;Disqus shortname&rdquo;) and import your WordPress comments by uploading the same XML dump that we exported in step-1.</p>
+
+<p>Disqus will have imported the page comments still assigned to their original WordPress URLs. So once the comments are imported (it can take a little while) you can manually edit the URLs one-by-one to reflect your new site&rsquo;s URLs. Alteratively you can do it in bulk using their <a href="https://help.disqus.com/import-export-and-syncing/url-mapper">URL Mapper tool</a> tool. This tool requires that you upload a CSV that maps the old URLs to the new URLs:</p>
+
+<pre><code class="language-csv">oldURL1,newURL1
+oldURL2,newURL2
+oldURL3,newURL3
+...
+</code></pre>
+
+<p>Here&rsquo;s an example from my CSV:</p>
+
+<pre><code class="language-csv">http://www.gilldave.co.uk/2014/08/my-new-dslr/,https://davegill.io/blog/my-new-dslr/
+http://www.gilldave.co.uk/2014/04/installing-cyanogenmod-on-my-samsung-s3-mini/,https://davegill.io/blog/installing-cyanogenmod-on-my-samsung-s3-mini/
+http://www.gilldave.co.uk/2013/09/the-wordpress-scheduler-wp-cron-php/,https://davegill.io/blog/the-wordpress-scheduler-wp-cron-php/
+</code></pre>
+
+<p>To embed the comments into your Hugo site your theme must support Disqus and may have specific instructions on how to achieve it. Usually you will at minimum need to set the Disqus shortname in the <code>config.toml</code> file:</p>
+
+<pre><code class="language-toml">disqusShortname = &quot;my-disqus-id&quot;
+</code></pre>
+
+<p>For the Jörmungandr theme this is all that is required! Other themes may require additional steps. I will probably write a separate post about how the comments integration with Disqus works under the hood.</p>
+
+<h2 id="and-that-s-it">And That&rsquo;s It!</h2>
+
+<p>Your WordPress site should now be fully and cleanly migrated over to WordPress 😄</p>
+
+<p>This process worked well for me but certainly there is room for improvement here; in particular a decent amount of manual work was involved in cleaning up the markdown and frontmatter of each post one-by-one.</p>
+
+<p>Are you aware of any better tools that can simplify this process?<br />
+Let me know in the comments&hellip;</p>
+
+</div>
+    
+    
+        <div class="posts-navigation">
+            
+                <a class="prev" href="/blog/new-hugo-generated-site/">New Hugo Generated Site</a>
+            
+            
+        </div>
+    
+    
+    
+<div id="disqus_thread"></div>
+<script>
+    (function() {
+        
+            var disqusURL = 'https:\/\/davegill.io\/blog\/migrating-from-wordpress-to-hugo\/';
+        
+
+        if (disqusURL.indexOf("localhost") != -1 || disqusURL.indexOf("127.0.0.1") != -1) {
+            document.getElementById('disqus_thread').innerHTML = '<p>Disqus comments are not available by default when the website is previewed locally. Set Params.disqusBaseURL in config.toml to enable local comments.</p>';
+            return;
+        }
+
+        window.disqus_config = function () {
+            this.page.title = 'Migrating from WordPress to Hugo';
+            this.page.identifier = 'migrating-from-wordpress-to-hugo';
+            this.page.url = disqusURL;
+        }
+
+        var d = document, s = d.createElement('script');
+        s.src = 'https://dave-gill.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>
+    <p>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></p>
+</noscript>
+
+
+        </div>
+        <div id="footer">
+        
+            <div class="social">
+    
+        <a href = "https://github.com/daveagill" alt="GitHub" class="fab fa-github" style="color:#000000;" target="_blank"></a>
+    
+        <a href = "https://twitter.com/daveagill" alt="Twitter" class="fab fa-twitter" style="color:#1da1f2;" target="_blank"></a>
+    
+        <a href = "https://uk.linkedin.com/in/daveagill" alt="LinkedIn" class="fab fa-linkedin" style="color:#007bb5;" target="_blank"></a>
+    
+        <a href = "https://youtube.com/user/daveagill" alt="YouTube" class="fab fa-youtube" style="color:#ff0000;" target="_blank"></a>
+    
+        <a href = "https://flickr.com/photos/142957833@N08" alt="Flickr" class="fab fa-flickr" style="color:#ff0084;" target="_blank"></a>
+    
+        <a href = "/index.xml" alt="RSS Feed" class="fas fa-rss" style="color:#ee802f;" target="_blank"></a>
+    
+</div>
+        
+        
+        
+    
+        
+            <span class="copyright">Copyright © 2019 David Gill; all rights reserved.</span>
+        
+    </div>
+    
+    </div>
+    
+    
+
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+        
+        <script>
+            window.addEventListener('load', function() {
+                hljs.initHighlighting();
+            }, true);
+        </script>
+    
+
+    
+
+    
+    
+</body>
+
+</html>

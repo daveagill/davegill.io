@@ -13,12 +13,23 @@
     
     
     <item>
+      <title>Migrating from WordPress to Hugo</title>
+      <link>https://davegill.io/blog/migrating-from-wordpress-to-hugo/</link>
+      <pubDate>Sat, 06 Apr 2019 12:39:17 +0100</pubDate>
+      
+      <guid>https://davegill.io/blog/migrating-from-wordpress-to-hugo/</guid>
+      <description>This guide will outline the process that I used when migrating this site from WordPress to Hugo.
+To follow these instructions you are going to need:
+ Hugo Git Node.js A Disqus account (if you want blog comments).  Step 1 - Convert Pages &amp;amp; Posts  Login to your WordPress site and export to XML. This contains all your textual content, hyperlinks, tags &amp;amp; categories, etc. But it does not include images.</description>
+    </item>
+    
+    <item>
       <title>New Hugo Generated Site</title>
       <link>https://davegill.io/blog/new-hugo-generated-site/</link>
       <pubDate>Mon, 04 Mar 2019 03:12:31 +0000</pubDate>
       
       <guid>https://davegill.io/blog/new-hugo-generated-site/</guid>
-      <description>Welcome to the new site! Here we are with a fresh new look and as you can it&amp;rsquo;s a minimalistic and content-first design which is enhanced by the ever so elegant Merriweather font.
+      <description>Welcome to the new site! Here we are with a fresh new look and as you can see it&amp;rsquo;s a minimalistic and content-first design which is enhanced by the ever so elegant Merriweather font.
 The minimalistic mantra extends beyond just the cosmetics to the inner workings of the site too; being fully offline-generated using a Static-Site-Generator (SSG) known as Hugo and skinned with a custom site theme I have named Jörmungander.</description>
     </item>
     

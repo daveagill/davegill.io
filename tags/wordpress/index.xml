@@ -7,10 +7,21 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <copyright>Copyright © {year} David Gill; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 09 Sep 2013 12:00:19 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 06 Apr 2019 12:39:17 +0100</lastBuildDate>
     
 	<atom:link href="https://davegill.io/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Migrating from WordPress to Hugo</title>
+      <link>https://davegill.io/blog/migrating-from-wordpress-to-hugo/</link>
+      <pubDate>Sat, 06 Apr 2019 12:39:17 +0100</pubDate>
+      
+      <guid>https://davegill.io/blog/migrating-from-wordpress-to-hugo/</guid>
+      <description>This guide will outline the process that I used when migrating this site from WordPress to Hugo.
+To follow these instructions you are going to need:
+ Hugo Git Node.js A Disqus account (if you want blog comments).  Step 1 - Convert Pages &amp;amp; Posts  Login to your WordPress site and export to XML. This contains all your textual content, hyperlinks, tags &amp;amp; categories, etc. But it does not include images.</description>
+    </item>
     
     <item>
       <title>The WordPress Scheduler: wp-cron.php</title>
