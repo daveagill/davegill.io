@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <title>The WordPress Scheduler: wp-cron.php - Dave Gill</title>
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.70.0" />
     <meta name="referrer" content="origin" />
     <meta name="author" content="David Gill" />
     <meta name="description" content="A blog about programming, electronics and other techie things." />
-    <meta name="copyright" content="Copyright © 2019 David Gill; all rights reserved." />
+    <meta name="copyright" content="Copyright © 2020 David Gill; all rights reserved." />
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="The WordPress Scheduler: wp-cron.php"/>
@@ -22,8 +22,9 @@ I use UpdraftPlus to do my site backups, it is a WordPress plugin that zips up t
 <meta property="og:description" content="So, I recently noticed that my site was not doing its automatic backups. In fact it had never done a backup and I simply had not bothered to check!
 I use UpdraftPlus to do my site backups, it is a WordPress plugin that zips up the database and uploaded files and sends them to you (I have it send them to my DropBox). After a bit of investigation and following some of the debug steps on their site I came to the conclusion that it must be WordPress&rsquo;s internal scheduler to blame." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://davegill.io/blog/the-wordpress-scheduler-wp-cron-php/" /><meta property="article:published_time" content="2013-09-09T12:00:19&#43;00:00"/>
-<meta property="article:modified_time" content="2013-09-09T12:00:19&#43;00:00"/>
+<meta property="og:url" content="https://davegill.io/blog/the-wordpress-scheduler-wp-cron-php/" />
+<meta property="article:published_time" content="2013-09-09T12:00:19+00:00" />
+<meta property="article:modified_time" content="2013-09-09T12:00:19+00:00" />
 
 
     
@@ -32,11 +33,7 @@ I use UpdraftPlus to do my site backups, it is a WordPress plugin that zips up t
     <link rel="shortcut icon" href="/favicon.ico" />
 
     
-    <link rel="stylesheet" href="/main.min.1634b7766703c5360ff49ae3aba523541e59046e1a56432712a61af65dc4efb8.css" />
-
-    
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css" integrity="sha256-w6kCMnFvhY2tI1OnsYR/rb5DG9yFGodJknvFZOkp51E=" crossorigin="anonymous" />
-    
+    <link rel="stylesheet" href="/main.min.57add03d843792bc71ffa81e3d9945f0d5f0c56d5446d8f0057d3dece5a47d5f.css" />
 
     
 
@@ -139,50 +136,47 @@ I use UpdraftPlus to do my site backups, it is a WordPress plugin that zips up t
 
     <div class="markdown">
     <p>So, I recently noticed that my site was not doing its automatic backups. In fact it had never done a backup and I simply had not bothered to check!</p>
-
 <p>I use UpdraftPlus to do my site backups, it is a WordPress plugin that zips up the database and uploaded files and sends them to you (I have it send them to my DropBox). After a bit of investigation and following some of the debug steps on their site I came to the conclusion that it must be WordPress&rsquo;s internal scheduler to blame. Without the scheduler the backups will never get kicked off and other things like checking for updates may be failing too. Question was, why was the scheduler borked?</p>
-
 <p>To understand this we first have to understand how the scheduler works in WordPress.</p>
-
 <p>It basically takes the form of wp-cron.php, a little script that checks to see if there is any scheduled work to do and, if there is, then it performs the necessary processing. This script is called whether a page is loaded on a WP site.</p>
-
 <p>Already, this has some consequences (and some potential red-herrings for my investigation). Clearly if the cron script is only invoked when there is site activity then for a lowly unloved site like mine the cron script isn&rsquo;t going to get called very regularly and scheduled tasks are not going take place on-time. Maybe the sheer amount of spam comments I get would keep things ticking over, I don&rsquo;t know. One day, when this site goes viral becomes an internet sensation, the vast quantity of page views would actually keep the cron script too busy, clearly it doesn&rsquo;t need to be called hundreds of time a minute! In fact as I understand it, in previous versions of WP concurrent invocations could cause problems; a problem that is solved these days using locks.</p>
-
 <p>You might wonder whether page loading is slowed down for those people who happen to visit the site when there is a scheduled task to perform. Fortunately this is not the case. The cron script is initiated concurrently.</p>
-
 <p>WordPress launches the concurrent task by making an HTTP request back to itself, thereby spawning a second server-side thread to handle the request. Something like this:</p>
-
-<pre><code>GET: http://www.yoursite.co.uk/wp-cron.php
-</code></pre>
-
-<p>Unfortunately this could fail for all kinds of reasons. LIke not being able to resolve the DNS name, for example.</p>
-
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">GET: http://www.yoursite.co.uk/wp-cron.php
+</code></pre></td></tr></table>
+</div>
+</div><p>Unfortunately this could fail for all kinds of reasons. LIke not being able to resolve the DNS name, for example.</p>
 <p>I use a shared hosting provider. This website is hosted on some server alongside a bunch of other websites. The overall server configuration is therefore out of my control. It turns out that a lot of hosting providers (including mine) disable loopback requests. In other words the server is unable to invoke a request on itself. Apparently this is for security reasons, perhaps to prevent some kind of infinite request loop. Personally I&rsquo;m inclined to disagree, I cannot think of any particularly good reason to do this; there is nothing malevolent that the machine could do by calling back to itself that couldn&rsquo;t also be achieved externally; they&rsquo;re just web calls after all!</p>
-
 <p>Initially I wasn&rsquo;t sure if this was really the case for me. I couldn&rsquo;t see anything in the logs about failed attempts to invoke wp-cron. But I had a script tat makes HTTP GET calls and using that I proved that it was indeed the case and showed empirically that such failures (which were request denied errors) are not logged for some reason.</p>
-
 <p>So what is the solution? Well there are two possible solutions&hellip;</p>
-
 <p>One is that WordPress actually has a second way to trigger concurrent work, you just have to enable it. It works by sending the user on a redirect and hijacking their original request to perform the cron work. I don&rsquo;t imagine that is the most pleasant user experience for the person visiting your site though.</p>
-
 <p>Another solution - the one I opted for - is to invoke wp-cron.php periodically from a genuine cron-job configured on the server. For many people this may not be a viable option if they don&rsquo;t have access to cron, or if they lack the technical skills to use it.</p>
-
 <p>Luckily my provider exposes a UI through CPanel that lets me configure up to 3 scheduled tasks. Of course I only need one for this and it would be trivial to write some kind of program that used a single cronjob but multiplexed that out to emulate an unlimited number of scheduled tasks.</p>
-
 <p>The ideal way (perhaps) to have cron invoke wp-cron would be to use wget to make a web request:</p>
-
-<pre><code>/usr/bin/wget http://yoursite.co.uk/wp-cron.php
-</code></pre>
-
-<p>Alas, that would obviously still involve the loopback, from which I am blocked, so it was not an option for me. Instead I just run php directly over the script. Which seems to work just fine:</p>
-
-<pre><code>/usr/bin/php5 /path/to/wp-cron.php
-</code></pre>
-
-<p>I configured the cronjob to run every half an hour. A lot of people seem to run it more frequently even than that! Seems like overkill to me. I suspect you could get away with running it less than once a day in reality.</p>
-
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/usr/bin/wget http://yoursite.co.uk/wp-cron.php
+</code></pre></td></tr></table>
+</div>
+</div><p>Alas, that would obviously still involve the loopback, from which I am blocked, so it was not an option for me. Instead I just run php directly over the script. Which seems to work just fine:</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">/usr/bin/php5 /path/to/wp-cron.php
+</code></pre></td></tr></table>
+</div>
+</div><p>I configured the cronjob to run every half an hour. A lot of people seem to run it more frequently even than that! Seems like overkill to me. I suspect you could get away with running it less than once a day in reality.</p>
 <p>So now I have smooth-running automatic backups of my WordPress database and files 🙂</p>
-
 <p>It only seems appropriate to use the scheduler to publish this post. It was actually written on September 8th 2013, but as I&rsquo;ve recently published a post just yesterday I will schedule this one for lunchtime tomorrow.</p>
 
 </div>
@@ -251,22 +245,12 @@ I use UpdraftPlus to do my site backups, it is a WordPress plugin that zips up t
         
     
         
-            <span class="copyright">Copyright © 2019 David Gill; all rights reserved.</span>
+            <span class="copyright">Copyright © 2020 David Gill; all rights reserved.</span>
         
     </div>
     
     </div>
     
-    
-
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-        
-        <script>
-            window.addEventListener('load', function() {
-                hljs.initHighlighting();
-            }, true);
-        </script>
     
 
     

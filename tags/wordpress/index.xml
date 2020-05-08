@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>WordPress on Dave Gill</title>
@@ -20,7 +20,7 @@
       <guid>https://davegill.io/blog/migrating-from-wordpress-to-hugo/</guid>
       <description>This guide will outline the process that I used when migrating this site from WordPress to Hugo.
 To follow these instructions you are going to need:
- Hugo Git Node.js A Disqus account (if you want blog comments).  Step 1 - Convert Pages &amp;amp; Posts  Login to your WordPress site and export to XML. This contains all your textual content, hyperlinks, tags &amp;amp; categories, etc. But it does not include images.</description>
+ Hugo Git Node.js A Disqus account (if you want blog comments).  Step 1 - Convert Pages &amp;amp; Posts   Login to your WordPress site and export to XML. This contains all your textual content, hyperlinks, tags &amp;amp; categories, etc. But it does not include images.</description>
     </item>
     
     <item>

@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <title>Week of Awesome IV - Gamut of Blob - Postmortem - Dave Gill</title>
-    <meta name="generator" content="Hugo 0.53" />
+    <meta name="generator" content="Hugo 0.70.0" />
     <meta name="referrer" content="origin" />
     <meta name="author" content="David Gill" />
     <meta name="description" content="A blog about programming, electronics and other techie things." />
-    <meta name="copyright" content="Copyright © 2019 David Gill; all rights reserved." />
+    <meta name="copyright" content="Copyright © 2020 David Gill; all rights reserved." />
 
     <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Week of Awesome IV - Gamut of Blob - Postmortem"/>
@@ -24,8 +24,9 @@ This year announced 4 themes and contestants were expected to select and incorp
 Well WoA4 is over and I am super pleased with my entry. It is somehow more complete and polished than I had anticipated to achieve considering I had a full week of work and a couple of weekend commitments that would see me Macbook-bound for the majority of the weekend.
 This year announced 4 themes and contestants were expected to select and incorporate 2 of these for their game: Shadows, Evolution, Ruins, Undead." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://davegill.io/blog/week-of-awesome-4-post-mortem/" /><meta property="article:published_time" content="2016-08-15T23:44:26&#43;00:00"/>
-<meta property="article:modified_time" content="2016-08-15T23:44:26&#43;00:00"/>
+<meta property="og:url" content="https://davegill.io/blog/week-of-awesome-4-post-mortem/" />
+<meta property="article:published_time" content="2016-08-15T23:44:26+00:00" />
+<meta property="article:modified_time" content="2016-08-15T23:44:26+00:00" />
 
 
     
@@ -34,11 +35,7 @@ This year announced 4 themes and contestants were expected to select and incorp
     <link rel="shortcut icon" href="/favicon.ico" />
 
     
-    <link rel="stylesheet" href="/main.min.1634b7766703c5360ff49ae3aba523541e59046e1a56432712a61af65dc4efb8.css" />
-
-    
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css" integrity="sha256-w6kCMnFvhY2tI1OnsYR/rb5DG9yFGodJknvFZOkp51E=" crossorigin="anonymous" />
-    
+    <link rel="stylesheet" href="/main.min.57add03d843792bc71ffa81e3d9945f0d5f0c56d5446d8f0057d3dece5a47d5f.css" />
 
     
 
@@ -141,17 +138,11 @@ This year announced 4 themes and contestants were expected to select and incorp
 
     <div class="markdown">
     <p>Embarrassingly I haven&rsquo;t used this blog in 2 years and that was for my WoA2 postmortem!</p>
-
 <p>Well WoA4 is over and I am super pleased with my entry. It is somehow more complete and polished than I had anticipated to achieve considering I had a full week of work and a couple of weekend commitments that would see me Macbook-bound for the majority of the weekend.</p>
-
 <p>This year announced 4 themes and contestants were expected to select and incorporate 2 of these for their game: <strong>Shadows, Evolution, Ruins, Undead</strong>.</p>
-
 <p>A restriction was that Shadows and Evolution had to manifest as gameplay mechanics, whilst Ruins and Undead would need to manifest as graphical theming. Since I am no artist, it takes me a long time to produce art and I have no experience producing art of any kind on a Mac, I decided to opt for the 2 gameplay themes: Shadows &amp; Evolution.</p>
-
 <p>Scope is always an issue in any project. So I took the entire Monday just to let the themes sink in and try to come up with an idea that was appropriate in scope for the free-time I had. I was open to extremely simple games like Flappy Bird but I simply could not marry that up with the requisite themes (evolution, shadows, ruins, undead) in a way that enthused me. Also under consideration was a farming game where veggies are bred and transmuted to achieve a desired phenotype with a supply &amp; demand mechanic driving that, as well as some kind of underwater game like flOw. Both interesting ideas but were too ambitious.</p>
-
 <p>The idea I went with was top-down maze-puzzler with minimalist graphical look featuring cute little blob creatures. Gameplay-wise I was partially inspired by games like Chronotron or the Clank levels from Ratchet &amp; Clank: A Crack in Time. In these games there is a way to generate multiple versions of yourself which must collaborate together to finish the level, things like standing on buttons to open gates. While I did not include their time-travelling mechanic I do have lots of cute little blob creatures running around standing on switches to banish <strong>shadows</strong> and allow fellow blobs to progress. Blobs can replicate themselves by finding DNA/gene fragments in the level; picking these up will spawn an <strong>evolved</strong> blob friend, each blob colour has a unique skill which allows it to access parts of the map that your regular unevolved green blob is unable to reach.</p>
-
 
 
 
@@ -172,9 +163,7 @@ This year announced 4 themes and contestants were expected to select and incorp
         </a>
     </figure>
 
-
 <p>The great thing about this idea is that it scales up/down depending on how productive I am: If things go well I can always develop new types of blob which enables new gameplay elements. If things go slowly then I can scale back on my ambitions for lots of different kinds of blob and focus up on just getting *something* done. My original plan included 5 types of blob:</p>
-
 <ul>
 <li>Green - The standard unevolved blob</li>
 <li>Blue - Able to swim and pass through water.</li>
@@ -182,17 +171,11 @@ This year announced 4 themes and contestants were expected to select and incorp
 <li>Purple - Resistant to the genetic stresses of teleportation and can use teleport pads.</li>
 <li>Yellow - Speedy, takes long straight paths very quickly and does not stop until it hits a wall.</li>
 </ul>
-
 <p>I probably could have implemented all of these if I had sacrificed some polish but I didn&rsquo;t want to do that.  In the end I managed all but the Yellow blob, not bad at all! And I don&rsquo;t feel that the game has suffered at all.</p>
-
 <p>One of the hard-learned lessons from previous years was that starting from a position of no code (just an empty main() method) is tough going. I end up spending a good 2-3 days just knocking out basic infrastructure (resource management, game-states, sprite-rendering, audio, physics, etc). So this year I prepped a very light-weight game-agnostic framework based on LibGDX to handle all that. This was a massive productivity boon and this &lsquo;engine&rsquo; wasn&rsquo;t at all constraining either having received only a minimal amount of frantic hack&rsquo;n&rsquo;slash near the end, which I will probably refactor and generalise for the future!</p>
-
 <p>Something that didn&rsquo;t work out as well I had hoped was the level file format. I used a similar format to my WoA2 game which worked very well for that game. However this time around I had lots of layers to the map and keeping them in-sync was an error-prone head-ache. Some kind of level-editor would have gone a long way to ameliorating this but there wasn&rsquo;t time for that kind of development. Perhaps for next time I can generalise the concept of a tile-based level editor? Or learn to use an existing one and write an importer for its file format.</p>
-
 <p>Overall, as usual, it was a lot of fun. Very tiring. But a lot of fun.</p>
-
 <p>I have whizzed through playing the other contestants&rsquo; games (need to go back and play some of them for longer) and I have to say that I really do not have a good sense for where my game will place amongst them once the judging is over. As usual I am blown away by what people are able to achieve in a week!</p>
-
 <p>Congratulations to everybody who managed to submit an entry. I am looking forward to next year&rsquo;s competition already! 😉</p>
 
 </div>
@@ -261,22 +244,12 @@ This year announced 4 themes and contestants were expected to select and incorp
         
     
         
-            <span class="copyright">Copyright © 2019 David Gill; all rights reserved.</span>
+            <span class="copyright">Copyright © 2020 David Gill; all rights reserved.</span>
         
     </div>
     
     </div>
     
-    
-
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
-        
-        <script>
-            window.addEventListener('load', function() {
-                hljs.initHighlighting();
-            }, true);
-        </script>
     
 
     
